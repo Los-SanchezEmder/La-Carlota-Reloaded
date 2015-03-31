@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include "Sensor/Acelerometro/Acelerometro.h"
 #include "PortSerial/PortSerial.h"
-
+// Hola mundo
 using namespace std;
 
 /*
