@@ -8,6 +8,8 @@
 #ifndef SENSOR_H
 #define	SENSOR_H
 #include "Dato.h"
+#include "../PortSerial/PortSerial.h"
+
 class Sensor {
 public:
     Sensor();
@@ -19,12 +21,18 @@ public:
         medicion = new Dato(cDatosSensor, Medicion);
         cMediciones++;
     };
+    float Lectura(std::string cd){
+        float valor;
+        valor = Adquiridor.ReadSensor(cd);
+        return valor;
+    };
     Sensor(const Sensor& orig);
     virtual ~Sensor();
 private:
     Dato *medicion;
     int cMediciones;
     int cDatosSensor;
+    static PortSerial Adquiridor;
 
 };
 

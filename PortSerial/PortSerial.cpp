@@ -42,7 +42,7 @@ PortSerial::PortSerial(int& caracteres, char** dispositivo) {
 PortSerial::PortSerial(const PortSerial& orig) {
 }
 
-void PortSerial::ReadSensor(std::string sensor) {
+float PortSerial::ReadSensor(std::string sensor) {
     std::string pedido = '#' + sensor;
     
     //SerialPort::DataBuffer buffer;
