@@ -8,6 +8,7 @@
 #include "Acelerometro.h"
 
 Acelerometro::Acelerometro():Sensor(3){
+    
 }
 
 Acelerometro::Acelerometro(const Acelerometro& orig):Sensor(3) {

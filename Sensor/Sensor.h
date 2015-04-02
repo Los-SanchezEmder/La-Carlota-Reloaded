@@ -16,24 +16,34 @@ public:
     Sensor(int cDatos){
         cMediciones = 0;
         cDatosSensor = cDatos;
+       
     };
-    void NuevaMedicion(float Medicion[]){
-        medicion = new Dato(cDatosSensor, Medicion);
-        cMediciones++;
-    };
-    float Lectura(std::string cd){
-        float valor;
-        valor = Adquiridor.ReadSensor(cd);
-        return valor;
-    };
+
+
     Sensor(const Sensor& orig);
+    
+    void AbrirPuerto(int argc, char** argv){
+         static PortSerial Adquiridor(argc,argv);
+    }
     virtual ~Sensor();
 private:
     Dato *medicion;
     int cMediciones;
     int cDatosSensor;
-    static PortSerial Adquiridor;
+    
 
+protected:
+
+    float Lectura(std::string cd) {
+        float valor;
+        valor = Adquiridor.ReadSensor(cd);
+        return valor;
+    };
+
+    void NuevaMedicion(float Medicion[]) {
+        medicion = new Dato(cDatosSensor, Medicion);
+        cMediciones++;
+    };
 };
 
 #endif	/* SENSOR_H */

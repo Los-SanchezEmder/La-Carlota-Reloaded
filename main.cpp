@@ -17,10 +17,14 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Acelerometro acc1;
-    PortSerial MBED(argc, argv);
+    Sensor Ser;
+    Ser.AbrirPuerto(argc,argv);
+
+    
+    //PortSerial MBED(argc, argv);
     float medicion[3]={2, 4, 7};
     
-    acc1.NuevaMedicion(medicion);
+  
 
     return 0;
 }

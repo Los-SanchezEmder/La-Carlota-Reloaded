@@ -16,6 +16,7 @@ public:
     PortSerial();
     PortSerial(int& caracteres, char** dispositivo);
     PortSerial(const PortSerial& orig);
+    void Inicializacion();
     float ReadSensor(std::string sensor);
     virtual ~PortSerial();
 private:
