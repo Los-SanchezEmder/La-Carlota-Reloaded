@@ -40,19 +40,21 @@ PortSerial::PortSerial(int& caracteres, char** dispositivo) {
 }
 
 PortSerial::PortSerial(const PortSerial& orig) {
+    
 }
 
 float PortSerial::ReadSensor(std::string sensor) {
-    std::string pedido = '#' + sensor;
+    std::string pedido = '#' + sensor + '\n';
     
     //SerialPort::DataBuffer buffer;
     char str[50];
     string intermedio;
     bool empiezaCadena = false;
-    float x, y, z;
+    float valor = 0;
     int i;
     try {
         serial_port->Write(pedido);
+        cout << pedido << endl;
         intermedio = serial_port->ReadLine(500, '\n');
         i = 0;
         for (int ii = 0; ii < intermedio.size(); ii++) {
@@ -66,21 +68,22 @@ float PortSerial::ReadSensor(std::string sensor) {
             }
         }
         cout << "------------" << endl;
+        cout << pedido << endl;
 
-        sscanf(str, "##%f//%f//%f//", &x, &y, &z);
+        sscanf(str, "##%f//", &valor);
 
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!";
         //return 1;
     }
-    cout << x << endl;
-    cout << y << endl;
-    cout << z << endl;
+    cout << "el valor medido es : ----- " << valor << endl;
+    return valor;
     //-- Show the received data
     
     
 }
 
 PortSerial::~PortSerial() {
+    this->serial_port->Close();
 }
 

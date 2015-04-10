@@ -17,8 +17,16 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Acelerometro acc1;
-    Sensor Ser;
-    Ser.AbrirPuerto(argc,argv);
+    PortSerial *FRDM;
+    FRDM = new PortSerial(argc, argv);
+    acc1.AsignarPlaca(FRDM);
+    acc1.ObtengoDatos();
+            
+    cout <<acc1 << endl;
+    
+    //FRDM.ReadSensor("d1");
+    //sleep(1000);
+    //acc1.ObtengoDatos();
 
     
     //PortSerial MBED(argc, argv);

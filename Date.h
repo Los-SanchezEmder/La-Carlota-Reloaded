@@ -7,6 +7,7 @@
 
 #ifndef DATE_H
 #define	DATE_H
+#include <iostream>
 
 class Date {
 public:
@@ -16,13 +17,22 @@ public:
         year=1986;
         hour= 0;
         minute= 0;
-        second= 0;
-        GetMomentoPC();
+        second= 23;
+        //GetMomentoPC();
     };
     Date(const Date& orig);
+    int GetYear(){
+        return this->year;
+    };
+    /*Date GetDate(){
+        return *this;
+    };*/
     void GetMomentoPC();
+    //Date& operator* (const Date& cd);
     Date& operator= (const Date&);
     virtual ~Date();
+    
+friend    std::ostream& operator<<(std::ostream&, Date&);
 private:
     int day;
     int month;
@@ -33,4 +43,3 @@ private:
 };
 
 #endif	/* DATE_H */
-
