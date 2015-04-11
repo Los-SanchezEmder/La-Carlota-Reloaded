@@ -21,7 +21,19 @@ public:
         //this->fecha = fecha;
     }
     Date GetFecha(){ return this->fecha ;}
+    
+    float GetDato(int indice){
+        return this->Medicion[indice];
+    }
+
     //Dato(const Dato& orig);
+    Dato& operator= (const Dato& cd){
+        this->fecha = cd.fecha;
+        this->cVariables = cd.cVariables;
+        this->Medicion = cd.Medicion;
+        return *this;
+        
+    };
     virtual ~Dato();
 private:
     Date fecha;

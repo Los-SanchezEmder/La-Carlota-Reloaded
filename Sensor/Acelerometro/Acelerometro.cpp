@@ -11,6 +11,20 @@ Acelerometro::Acelerometro():Sensor(3){
     
 }
 
+std::ostream& operator<<(std::ostream& co, Acelerometro& cd) {
+    Dato ultimodato;
+    ultimodato = cd.UltimaMedicion();
+    Date DDDd;
+    Date *prueba=new Date;
+    for (int i = 0; i < 3; i++)
+        co << ultimodato.GetDato(i) << std::endl;
+    
+    co << *prueba << std::endl;
+    //co << ultimodato.GetFecha() << std::endl;
+    co << std::endl;
+    return co;
+}
+
 Acelerometro::Acelerometro(const Acelerometro& orig):Sensor(3) {
 }
 
