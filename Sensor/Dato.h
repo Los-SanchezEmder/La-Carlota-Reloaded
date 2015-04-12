@@ -13,6 +13,8 @@ class Dato {
 public:
     Dato();
     Dato(int cVariables);
+    Dato(const Dato& orig);
+    
     Dato(int& cVariables, float medicion[] ){
         this->cVariables =cVariables; 
         this->Medicion = new float[this->cVariables];
@@ -20,7 +22,7 @@ public:
             this->Medicion[i]= medicion[i];
         //this->fecha = fecha;
     }
-    Date GetFecha(){ return this->fecha ;}
+    Date& GetFecha(){ return this->fecha ;}
     
     float GetDato(int indice){
         return this->Medicion[indice];

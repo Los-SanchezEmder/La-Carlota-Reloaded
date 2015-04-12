@@ -18,9 +18,10 @@ public:
         hour= 0;
         minute= 0;
         second= 23;
-        //GetMomentoPC();
+        GetMomentoPC();
     };
     Date(const Date& orig);
+    
     int GetYear(){
         return this->year;
     };
@@ -32,7 +33,7 @@ public:
     Date& operator= (const Date&);
     virtual ~Date();
     
-friend    std::ostream& operator<<(std::ostream&, Date&);
+friend  std::ostream& operator<< (std::ostream&, Date&);
 private:
     int day;
     int month;

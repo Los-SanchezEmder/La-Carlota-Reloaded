@@ -19,12 +19,8 @@ public:
     void ObtengoDatos(){
         std::string sh[3]={"sax", "say", "saz"};
         float medicion[3];
-        medicion[0] = Lectura(sh[0]);
-        medicion[1] = Lectura(sh[1]);
-        medicion[2] = Lectura(sh[2]);
-        /*
         for (int i=0; i<3; i++)
-            medicion[i] = Lectura(sh[i]);*/
+            medicion[i] = Lectura(sh[i]);
         NuevaMedicion(medicion);
     }
     friend std::ostream& operator<<(std::ostream& co, Acelerometro& cd);

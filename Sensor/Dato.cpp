@@ -11,10 +11,12 @@
 Dato::Dato() {
     
 }
-/*
+
 Dato::Dato(const Dato& orig) {
+        this->fecha = orig.fecha;
+        this->cVariables = orig.cVariables;
+        this->Medicion = orig.Medicion;
 }
-*/
 
 
 Dato::~Dato() {
