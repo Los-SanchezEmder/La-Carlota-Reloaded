@@ -12,15 +12,17 @@
 class Date {
 public:
     Date(){
+        /*----Creo el objeto con le fecha del momento, sera lo correcto?¿? -----
         day=19;
         month=12;
         year=1986;
         hour= 0;
         minute= 0;
-        second= 23;
-        //GetMomentoPC();
+        second= 23;*/
+        GetMomentoPC();
     };
     Date(const Date& orig);
+    
     int GetYear(){
         return this->year;
     };
@@ -28,11 +30,10 @@ public:
         return *this;
     };*/
     void GetMomentoPC();
-    //Date& operator* (const Date& cd);
     Date& operator= (const Date&);
     virtual ~Date();
     
-friend    std::ostream& operator<<(std::ostream&, Date&);
+friend  std::ostream& operator<< (std::ostream&, Date&);
 private:
     int day;
     int month;
