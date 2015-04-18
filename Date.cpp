@@ -39,19 +39,10 @@ Date& Date::operator= (const Date& cd){
     second = cd.second;
     return *this;
 }
-/*Date& Date::operator* ( const Date& cd){
-    this->day *= cd.day;
-    this->month *= cd.month;
-    this->year *= cd.year;
-    this->hour *= cd.hour;
-    this->minute *= cd.minute;
-    this->second *= cd.second;
 
-    return *this;
-}*/
 
-// imprime cualquier cosa!!
 std::ostream& operator<< (std::ostream& co, Date& cd) {
+    /*muestra la fecha y hora*/
     co << "El dia de la medicion fue : "<< cd.day <<'/'<< cd.month << '/' << cd.year << std::endl;
     co << "La hora fue : " << cd.hour<<':'<<cd.minute<<':' <<cd.second <<std::endl;
     return co;

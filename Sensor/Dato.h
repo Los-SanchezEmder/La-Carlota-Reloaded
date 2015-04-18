@@ -15,27 +15,23 @@ public:
     Dato(int cVariables);
     Dato(const Dato& orig);
     
-    Dato(int& cVariables, float medicion[] ){
-        this->cVariables =cVariables; 
-        this->Medicion = new float[this->cVariables];
-        for(int i=0;i< this->cVariables;i++)
-            this->Medicion[i]= medicion[i];
-        //this->fecha = fecha;
-    }
-    Date& GetFecha(){ return this->fecha ;}
+    Dato(int& cVariables, float medicion[] );
+
+ /** \fn Date& GetFecha()
+ * \brief Devuelve la fecha en la que fue tomada el dato
+ * \param Dinguno.
+ * \return Devuelve el contenido del puntero en dicha direccion  */
+    Date& GetFecha(){
+        return this->fecha ;}
     
-    float GetDato(int indice){
-        return this->Medicion[indice];
-    }
+     /** \fn 
+ * \brief 
+ * \param 
+ * \return   */
+    float GetDato(int indice)   {return this->Medicion[indice]; }
 
     //Dato(const Dato& orig);
-    Dato& operator= (const Dato& cd){
-        this->fecha = cd.fecha;
-        this->cVariables = cd.cVariables;
-        this->Medicion = cd.Medicion;
-        return *this;
-        
-    };
+    Dato& operator= (const Dato& cd);
     virtual ~Dato();
 private:
     Date fecha;
