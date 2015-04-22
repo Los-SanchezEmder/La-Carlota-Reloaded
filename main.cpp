@@ -25,8 +25,10 @@ int main(int argc, char** argv) {
     
     dominguito = acc1.Busqueda(10); 
     for(int i=0; i < dominguito.size();i++){
-    cout <<acc1. << endl;
-     cout <<acc1.Medicion(i).GetFecha() << endl;
+        cout <<acc1.Medicion(i).GetDato(0) << endl;
+        cout <<acc1.Medicion(i).GetDato(1) << endl;
+        cout <<acc1.Medicion(i).GetDato(2) << endl;
+        cout <<acc1.Medicion(i).GetFecha() << endl;
     
     }
     
