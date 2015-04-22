@@ -30,8 +30,9 @@ public:
  * \return   */
     float GetDato(int indice)   {return this->Medicion[indice]; }
 
-    //Dato(const Dato& orig);
+    //Dato(const Dato& orig);d
     Dato& operator= (const Dato& cd);
+    friend std::ostream& operator<<(std::ostream& co, Dato& cd);
     virtual ~Dato();
 private:
     Date fecha;

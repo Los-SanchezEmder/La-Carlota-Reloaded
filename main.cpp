@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include "Sensor/Acelerometro/Acelerometro.h"
 #include "PortSerial/PortSerial.h"
+#include <vector>
 // Hola mundo
 using namespace std;
 
@@ -15,14 +16,19 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    
+    vector<int> dominguito;
     Acelerometro acc1;
     PortSerial *FRDM;
     FRDM = new PortSerial(argc, argv);
     acc1.AsignarPlaca(FRDM);
     acc1.ObtengoDatos();
-            
-    cout <<acc1 << endl;
+    
+    dominguito = acc1.Busqueda(10); 
+    for(int i=0; i < dominguito.size();i++){
+    cout <<acc1. << endl;
+     cout <<acc1.Medicion(i).GetFecha() << endl;
+    
+    }
     
     //FRDM.ReadSensor("d1");
     //sleep(1000);

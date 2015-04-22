@@ -16,6 +16,7 @@ public:
     
     Acelerometro(const Acelerometro& orig);
     
+ 
     void ObtengoDatos(){
         std::string sh[3]={"sax", "say", "saz"};
         float medicion[3];

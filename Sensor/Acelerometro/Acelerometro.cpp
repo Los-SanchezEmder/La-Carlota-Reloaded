@@ -11,6 +11,8 @@ Acelerometro::Acelerometro():Sensor(3){
     
 }
 
+
+
 std::ostream& operator<<(std::ostream& co, Acelerometro& cd) {
     Dato ultimodato = cd.UltimaMedicion();
     for (int i = 0; i < 3; i++)

@@ -8,6 +8,7 @@
 #ifndef SENSOR_H
 #define	SENSOR_H
 #include "Dato.h"
+#include <vector>
 #include "../PortSerial/PortSerial.h"
 
 class Sensor {
@@ -33,6 +34,34 @@ public:
     Dato UltimaMedicion(){
        return this->medicion[(this->cMediciones)-1];
        
+    }
+    
+    Dato Medicion(int indice){
+        return this->medicion[indice];
+    }
+    
+    std::vector<int> Busqueda(float porcentaje){
+        float limiteSuperior = (100 + porcentaje)/100;
+        float limiteInferior = (100 - porcentaje)/100;
+        std::vector<int> indices;
+        float ultimoDato[cDatosSensor];
+        
+        for(int i = 0; i< cDatosSensor; i++){
+            ultimoDato[i]=medicion[0].GetDato(i);
+        }
+        
+        for(int i=1; i< cMediciones; i++){
+            for(int j = 0; j< cDatosSensor; j++){
+                if((medicion[i].GetDato(j)<ultimoDato[j]*limiteInferior)||(medicion[i].GetDato(j)>ultimoDato[j]*limiteSuperior)){
+                    //encontre un dato con las caracteristicas que busco
+                    indices.push_back(i);// = new std::vector(i);
+                    break;
+                }
+                
+            }
+            
+        }
+        return indices;
     }
 private:
     Dato *medicion;
