@@ -54,21 +54,21 @@ float PortSerial::ReadSensor(std::string sensor) {
     int i;
     try {
         serial_port->Write(pedido);
-        cout << pedido << endl;
+        //cout << pedido << endl;
         intermedio = serial_port->ReadLine(500, '\n');
         i = 0;
         for (int ii = 0; ii < intermedio.size(); ii++) {
             if ((intermedio[ii] == '#')&& !empiezaCadena) {
                 empiezaCadena = true;
             }
-            cout << intermedio[ii];
+            //cout << intermedio[ii];
             if (empiezaCadena) {
                 str[i] = intermedio[ii];
                 i++;
             }
         }
-        cout << "------------" << endl;
-        cout << pedido << endl;
+        //cout << "------------" << endl;
+        //cout << pedido << endl;
 
         sscanf(str, "##%f//", &valor);
 
@@ -76,7 +76,7 @@ float PortSerial::ReadSensor(std::string sensor) {
         cout << "TIMEOUT!";
         //return 1;
     }
-    cout << "el valor medido es : ----- " << valor << endl;
+    //cout << "el valor medido es : ----- " << valor << endl;
     return valor;
     //-- Show the received data
     
