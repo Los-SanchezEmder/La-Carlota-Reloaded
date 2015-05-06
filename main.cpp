@@ -21,13 +21,13 @@ int main(int argc, char** argv) {
     PortSerial *FRDM;
     FRDM = new PortSerial(argc, argv);
     acc1.AsignarPlaca(FRDM);
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 100; i++) {
         acc1.ObtengoDatos();
     }
-   acc1.Impresion();
     
-   dominguito = acc1.Busqueda(10);
+   dominguito = acc1.Busqueda(50);
     for (int i = 0; i < dominguito.size(); i++) {
+        cout << i << endl;
         cout << acc1.Medicion(i).GetDato(0) << endl;
         cout << acc1.Medicion(i).GetDato(1) << endl;
         cout << acc1.Medicion(i).GetDato(2) << endl;

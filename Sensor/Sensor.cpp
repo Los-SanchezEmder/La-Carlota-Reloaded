@@ -35,35 +35,19 @@ std::vector<int> Sensor::Busqueda(float porcentaje) {
         std::vector<int> indices;
         std::vector<int>::const_iterator cii;
         float ultimoDato[cDatosSensor];
-        std::cout << "antes del for!!" << std::endl;
-        //std::cout << medicion[0] << std::endl;
         for(int i = 0; i< cDatosSensor; i++){
             ultimoDato[i]=medicion[0].GetDato(i);
         }
-        std::cout << "defino ultimo dato antes de buscar " << std::endl;
-        std::cout << cMediciones << std::endl;
         
         for(int i=1; i< cMediciones; i++){
-            //std::cout << " Primer for de busqueda" << std::endl;
             for (int j = 0; j < cDatosSensor; j++) {
-                //std::cout << "segundo for de busqueda" << std::endl;
                 float uno= fabs(ultimoDato[j] * limiteInferior);
-                float dos= fabs(ultimoDato[j] * limiteSuperior);
-                //std::cout << "entro al ifff" << std::endl;
-                //std::cout << i << std::endl;
-                //std::cout << j << std::endl;
-                //std::cout << "Primera comparacion : "<< uno << std::endl;
-                //std::cout << "Segunda comparacion: " << dos << std::endl;
-                //std::cout << "despues del igual" << std::endl;
-                
+                float dos= fabs(ultimoDato[j] * limiteSuperior);                
                 float comparacion = fabs(medicion[i].GetDato(j));
-                //std::cout << comparacion << std::endl;
-                //std::cout << "despues del igual**" << std::endl;
                 if ((comparacion <= uno) || (comparacion >= dos)) {
                     //encontre un dato con las caracteristicas que busco
-                    std::cout << "++Guardo Dato++" << std::endl;
-                    indices.push_back(i); // = new std::vector(i);
-                    //std::cout << "antes del break" << std::endl;
+                    //  Guardo hubicacion del dato
+                    indices.push_back(i); 
                     break;
                 }
 
@@ -72,10 +56,9 @@ std::vector<int> Sensor::Busqueda(float porcentaje) {
             for (int z = 0; z < cDatosSensor; z++) {
                 ultimoDato[z] = medicion[i].GetDato(z);
             }
-            std::cout << "Despues del break" << std::endl;
-            std::cout << "Termino busqueda, dentro de busqueda" << std::endl;
-            
+            //Despues del break
         }
+         //Termino busqueda, dentro de busqueda
         return indices;
     }
 
