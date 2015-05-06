@@ -19,10 +19,8 @@ public:
     void Inicializacion();
     float ReadSensor(std::string sensor);
     virtual ~PortSerial();
-    PortSerial& operator= (const PortSerial& cd){
-        serial_port= cd.serial_port;
-        return *this;
-    }
+    PortSerial& operator=(const PortSerial& cd);
+
 private:
     SerialPort *serial_port;
 };

@@ -7,28 +7,17 @@
 
 #ifndef DATE_H
 #define	DATE_H
+
 #include <iostream>
 
 class Date {
 public:
-    Date(){
-        /*----Creo el objeto con le fecha del momento, sera lo correcto?¿? -----
-        day=19;
-        month=12;
-        year=1986;
-        hour= 0;
-        minute= 0;
-        second= 23;*/
-        GetMomentoPC();
-    };
+    Date();
+        
     Date(const Date& orig);
     
-    int GetYear(){
-        return this->year;
-    };
-    /*Date GetDate(){
-        return *this;
-    };*/
+    int GetYear();
+    
     void GetMomentoPC();
     Date& operator= (const Date&);
     virtual ~Date();

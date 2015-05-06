@@ -8,25 +8,19 @@
 #ifndef ACELEROMETRO_H
 #define	ACELEROMETRO_H
 #include "../Sensor.h"
-#include <iostream>
+#include "../Dato.h"
 
-class Acelerometro:public Sensor{
+
+class Acelerometro : public Sensor {
 public:
     Acelerometro();
-    
+
     Acelerometro(const Acelerometro& orig);
-    
- 
-    void ObtengoDatos(){
-        std::string sh[3]={"sax", "say", "saz"};
-        float medicion[3];
-        for (int i=0; i<3; i++)
-            medicion[i] = Lectura(sh[i]);
-        NuevaMedicion(medicion);
-    }
+
+    void ObtengoDatos();
+
     friend std::ostream& operator<<(std::ostream& co, Acelerometro& cd);
 
-    
     virtual ~Acelerometro();
 private:
 
