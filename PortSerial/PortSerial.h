@@ -18,6 +18,7 @@ public:
     PortSerial(const PortSerial& orig);
     void Inicializacion();
     float ReadSensor(std::string sensor);
+    void WriteSensor(std::string sensor, int& dato);
     virtual ~PortSerial();
     PortSerial& operator=(const PortSerial& cd);
 

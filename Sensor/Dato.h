@@ -7,7 +7,6 @@
 
 #ifndef DATO_H
 #define	DATO_H
-#include "../Date.h"
 #include <iostream>
 
 class Dato {
@@ -17,7 +16,7 @@ public:
     Dato(const Dato& orig);
     Dato(int& cVariables, float medicion[] );
 
-   Date& GetFecha();
+
   
     float GetDato(int indice);
 
@@ -27,7 +26,7 @@ public:
     
     virtual ~Dato();
 private:
-    Date fecha;
+
     int cVariables;
     float *Medicion;
 

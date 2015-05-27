@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o \
 	${OBJECTDIR}/Sensor/Dato.o \
 	${OBJECTDIR}/Sensor/Sensor.o \
+	${OBJECTDIR}/Sensor/Temperatura/Temperatura.o \
 	${OBJECTDIR}/main.o
 
 
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Sensor/Sensor.o: Sensor/Sensor.cpp
 	${MKDIR} -p ${OBJECTDIR}/Sensor
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/local/lib -I/usr/local/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Sensor.o Sensor/Sensor.cpp
+
+${OBJECTDIR}/Sensor/Temperatura/Temperatura.o: Sensor/Temperatura/Temperatura.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sensor/Temperatura
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/lib -I/usr/local/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Temperatura/Temperatura.o Sensor/Temperatura/Temperatura.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
