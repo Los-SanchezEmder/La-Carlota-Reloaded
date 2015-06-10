@@ -46,7 +46,7 @@ void Date::SetDateFromRTC() {
     medicion[5]+=1900;
     NuevaMedicion(medicion);
 }
-void Date::CheckRTC(){
+/*void Date::CheckRTC(){
     time_t t = time(NULL);
     struct tm today = *localtime(&t);
     float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon+1, today.tm_year+1900};
@@ -54,6 +54,7 @@ void Date::CheckRTC(){
 
     
 }
+ * */
 /*
 Date& Date::operator=(const Date& cd) {
     this->medicion[0] = cd.Medicion(0);

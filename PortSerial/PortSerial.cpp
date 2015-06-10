@@ -84,7 +84,14 @@ void PortSerial::WriteSensor(std::string sensor, int& dato) {
     //mando comando para escribir
     float confirmacion= ReadSensor("CRTC");
     //recibo confirmacion
-    if (confirmacion ==1)
+    if (confirmacion ==1){
+        time_t reloj= time(NULL);
+        string relojito;
+        relojito = ctime(&reloj);
+        serial_port->Write(relojito);
+        
+    }
+    
         
     
     //envio nuevo tdato de la fecha¿
