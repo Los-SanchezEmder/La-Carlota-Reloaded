@@ -9,8 +9,13 @@
 #define	DATE_H
 
 #include <iostream>
+#include "PortSerial/PortSerial.h"
+#include "Sensor/Dato.h"
+#include "Sensor/Sensor.h"
+#include "ctime"
+#include <time.h>
 
-class Date {
+class Date : public Sensor{
 public:
     Date();
         
@@ -18,18 +23,16 @@ public:
     
     int GetYear();
     
-    void GetMomentoPC();
+    void SetDateFromPC();
+    void SetDateFromRTC();
+    void CheckRTC();
     Date& operator= (const Date&);
     virtual ~Date();
-    
-friend  std::ostream& operator<< (std::ostream&, Date&);
+    friend  std::ostream& operator<< (std::ostream&, Date&);
+
+
 private:
-    int day;
-    int month;
-    int year;
-    int hour;
-    int minute;
-    int second;
+
 };
 
 #endif	/* DATE_H */

@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o \
 	${OBJECTDIR}/Sensor/Dato.o \
 	${OBJECTDIR}/Sensor/Sensor.o \
+	${OBJECTDIR}/Sensor/Temperatura/Temperatura.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,11 +62,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Date.o: Date.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -92,6 +93,11 @@ ${OBJECTDIR}/Sensor/Sensor.o: Sensor/Sensor.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Sensor.o Sensor/Sensor.cpp
 
+${OBJECTDIR}/Sensor/Temperatura/Temperatura.o: Sensor/Temperatura/Temperatura.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sensor/Temperatura
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Temperatura/Temperatura.o Sensor/Temperatura/Temperatura.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -103,7 +109,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded
 
 # Subprojects
 .clean-subprojects:

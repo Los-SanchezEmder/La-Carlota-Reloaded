@@ -11,10 +11,10 @@
 
 using namespace std;
 
-PortSerial::PortSerial() {
+PortSerial::PortSerial() {  
 
 }
-
+        
 PortSerial::PortSerial(int& caracteres, char** dispositivo) {
 
     if (caracteres < 2) {
@@ -72,6 +72,7 @@ float PortSerial::ReadSensor(std::string sensor) {
         
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!";
+        return 0;
         
     }
    
@@ -79,9 +80,23 @@ float PortSerial::ReadSensor(std::string sensor) {
     //-- Show the received data
 }
 
+void PortSerial::WriteSensor(std::string sensor, int& dato) {
+    //mando comando para escribir
+    float confirmacion= ReadSensor("CRTC");
+    //recibo confirmacion
+    if (confirmacion ==1)
+        
+    
+    //envio nuevo tdato de la fecha¿
+    
+}
+
+
 PortSerial::~PortSerial() {
     this->serial_port->Close();
 }
+
+
 
 PortSerial& PortSerial::operator= (const PortSerial& cd){
         serial_port= cd.serial_port;

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=frdm_class
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/frdm_class
+CND_ARTIFACT_NAME_Debug=la-carlota-reloaded
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/la-carlota-reloaded
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=frdmclass.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/frdmclass.tar
+CND_PACKAGE_NAME_Debug=la-carlota-reloaded.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/la-carlota-reloaded.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=frdm_class
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/frdm_class
+CND_ARTIFACT_NAME_Release=la-carlota-reloaded
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/la-carlota-reloaded
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=frdmclass.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/frdmclass.tar
+CND_PACKAGE_NAME_Release=la-carlota-reloaded.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/la-carlota-reloaded.tar
 #
 # include compiler specific variables
 #

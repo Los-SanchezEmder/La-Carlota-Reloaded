@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=FRDM_class
+PROJECTNAME=La-Carlota-Reloaded
 
 # Active Configuration
 DEFAULTCONF=Debug

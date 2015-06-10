@@ -9,7 +9,7 @@
       <itemPath>Sensor/Dato.h</itemPath>
       <itemPath>PortSerial/PortSerial.h</itemPath>
       <itemPath>Sensor/Sensor.h</itemPath>
-      <itemPath>Temperatura.h</itemPath>
+      <itemPath>Sensor/Temperatura/Temperatura.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,7 +23,7 @@
       <itemPath>Sensor/Dato.cpp</itemPath>
       <itemPath>PortSerial/PortSerial.cpp</itemPath>
       <itemPath>Sensor/Sensor.cpp</itemPath>
-      <itemPath>Temperatura.cpp</itemPath>
+      <itemPath>Sensor/Temperatura/Temperatura.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -90,9 +90,9 @@
       </item>
       <item path="Sensor/Sensor.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Temperatura.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Sensor/Temperatura/Temperatura.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Temperatura.h" ex="false" tool="3" flavor2="0">
+      <item path="Sensor/Temperatura/Temperatura.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -140,9 +140,9 @@
       </item>
       <item path="Sensor/Sensor.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Temperatura.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Sensor/Temperatura/Temperatura.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Temperatura.h" ex="false" tool="3" flavor2="0">
+      <item path="Sensor/Temperatura/Temperatura.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

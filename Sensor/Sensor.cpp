@@ -34,16 +34,22 @@ std::vector<int> Sensor::Busqueda(float porcentaje) {
         std::cout << limiteInferior << std::endl;
         std::vector<int> indices;
         std::vector<int>::const_iterator cii;
-        float ultimoDato[cDatosSensor];
-        for(int i = 0; i< cDatosSensor; i++){
-            ultimoDato[i]=medicion[0].GetDato(i);
-        }
+        //float ultimoDato[cDatosSensor];
+        //for(int i = 0; i< cDatosSensor; i++){
+        //    ultimoDato[i]=medicion[0].GetDato(i);
+        //}
         
         for(int i=1; i< cMediciones; i++){
             for (int j = 0; j < cDatosSensor; j++) {
-                float uno= fabs(ultimoDato[j] * limiteInferior);
-                float dos= fabs(ultimoDato[j] * limiteSuperior);                
+                
+                float uno= fabs(medicion[i-1].GetDato(j) * limiteInferior);
+                float dos= fabs(medicion[i-1].GetDato(j) * limiteSuperior);                
                 float comparacion = fabs(medicion[i].GetDato(j));
+                
+                //float uno= fabs(ultimoDato[j] * limiteInferior);
+                //float dos= fabs(ultimoDato[j] * limiteSuperior);                
+                //float comparacion = fabs(medicion[i].GetDato(j));
+                
                 if ((comparacion <= uno) || (comparacion >= dos)) {
                     //encontre un dato con las caracteristicas que busco
                     //  Guardo hubicacion del dato
@@ -53,9 +59,9 @@ std::vector<int> Sensor::Busqueda(float porcentaje) {
 
                 
             }
-            for (int z = 0; z < cDatosSensor; z++) {
-                ultimoDato[z] = medicion[i].GetDato(z);
-            }
+            //for (int z = 0; z < cDatosSensor; z++) {
+            //    ultimoDato[z] = medicion[i].GetDato(z);
+            //}
             //Despues del break
         }
          //Termino busqueda, dentro de busqueda
