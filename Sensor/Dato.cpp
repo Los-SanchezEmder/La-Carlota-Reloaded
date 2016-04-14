@@ -44,10 +44,11 @@ Dato::~Dato() {
 }
 
 
-/** \fn 
+/** \fn dddddddd
+ *      ddddddddd
  * \brief 
- * \param 
- * \return   */
+ * \param ddddd
+ * \return  dddddd */
 float Dato::GetDato(int indice) {
     return this-> Medicion[indice];
 }
