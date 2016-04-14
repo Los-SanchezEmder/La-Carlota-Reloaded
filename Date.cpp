@@ -39,22 +39,29 @@ void Date::SetDateFromPC() {
     
 }
 void Date::SetDateFromRTC() {
+    std::cout<<"bbbb1111"<<std::endl;
     std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "sta"};
+    std::cout<<"bbbb2222"<<std::endl;
+    std::cout<<"bbbb3333"<<std::endl;
     float medicion[6];
-    for (int i = 0; i < 6; i++)
+    std::cout<<"bbbb4444"<<std::endl;
+    for (int i = 0; i < 6; i++){
+        std::cout << "bbbb5555 %i"<< std::endl;
         medicion[i] = Lectura(sh[i]);
+    }
     medicion[5]+=1900;
     NuevaMedicion(medicion);
 }
-/*void Date::CheckRTC(){
+
+/*
+void Date::CheckRTC(){
     time_t t = time(NULL);
     struct tm today = *localtime(&t);
     float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon+1, today.tm_year+1900};
     if
 
     
-}
- * */
+}*/
 /*
 Date& Date::operator=(const Date& cd) {
     this->medicion[0] = cd.Medicion(0);

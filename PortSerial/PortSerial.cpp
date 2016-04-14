@@ -91,7 +91,6 @@ void PortSerial::WriteSensor(std::string sensor, int& dato) {
         serial_port->Write(relojito);
         
     }
-    
         
     
     //envio nuevo tdato de la fecha¿

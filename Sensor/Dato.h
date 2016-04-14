@@ -27,7 +27,7 @@ public:
     virtual ~Dato();
 private:
 
-    int cVariables;
+    int cVariables; // cantidad de variables a medir el sensor
     float *Medicion;
 
 };

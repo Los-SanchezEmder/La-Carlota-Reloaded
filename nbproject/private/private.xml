@@ -6,15 +6,6 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/PortSerial/PortSerial.h</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/main.cpp</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/Sensor/Sensor.cpp</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/Date.cpp</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/Sensor/Sensor.h</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/Date.h</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/Sensor/Acelerometro/Acelerometro.cpp</file>
-            <file>file:/home/richisan/NetBeansProjects/La-Carlota-Reloaded/PortSerial/PortSerial.cpp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
