@@ -18,22 +18,22 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    cout<<"000"<<endl;
+   
     vector<int> dominguito;
-    cout<<"aaaaa"<<endl;
-    Acelerometro acc1;
-    cout<<"bbbb"<<endl;
-    Date RTC;
-    cout<<"cccc"<<endl;
-    Temperatura temp1;
-    cout<<"1111"<<endl;
     PortSerial *FRDM;
     FRDM = new PortSerial(argc, argv);
+    
+    Acelerometro acc1;
+    Date RTC;
+    Temperatura temp1;
+    
+    cout<<"1111"<<endl;
     acc1.AsignarPlaca(FRDM);
     cout<<"2222"<<endl;
     RTC.AsignarPlaca(FRDM);
     temp1.AsignarPlaca(FRDM);
     cout<<"33333"<<endl;
+    
     for (int i = 0; i < 20; i++) {
         cout<<"%i"<<endl;
         acc1.ObtengoDatos();

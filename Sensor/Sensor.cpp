@@ -71,8 +71,10 @@ std::vector<int> Sensor::Busqueda(float porcentaje) {
 
 
 float Sensor::Lectura(std::string cd) {
+   
     float valor;
     valor = Placa->ReadSensor(cd);
+     std::cout << "read sensor"<< std::endl;
     return valor;
 };
 

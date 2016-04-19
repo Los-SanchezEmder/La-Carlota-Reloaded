@@ -63,7 +63,7 @@
             <pElem>/usr/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>serial</linkerLibLibItem>
+            <linkerOptionItem>`pkg-config --libs libserial`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

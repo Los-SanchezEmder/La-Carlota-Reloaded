@@ -39,15 +39,16 @@ void Date::SetDateFromPC() {
     
 }
 void Date::SetDateFromRTC() {
-    std::cout<<"bbbb1111"<<std::endl;
+    
     std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "sta"};
-    std::cout<<"bbbb2222"<<std::endl;
-    std::cout<<"bbbb3333"<<std::endl;
+    
     float medicion[6];
-    std::cout<<"bbbb4444"<<std::endl;
+ 
     for (int i = 0; i < 6; i++){
-        std::cout << "bbbb5555 %i"<< std::endl;
+        std::cout << "Estoy en SetDateFromRTC()"<< std::endl;
+      
         medicion[i] = Lectura(sh[i]);
+        std::cout << "luego de medicion..."<< std::endl;
     }
     medicion[5]+=1900;
     NuevaMedicion(medicion);
