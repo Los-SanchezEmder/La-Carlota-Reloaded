@@ -10,7 +10,7 @@
 
 
 Date::Date(): Sensor(6){
-    SetDateFromRTC();
+   //SetDateFromRTC();
 };
 /*
 Date::Date(const Date& orig): Sensor(6) {
@@ -48,6 +48,7 @@ void Date::SetDateFromRTC() {
     for (int i = 0; i < 6; i++){
         std::cout << "bbbb5555 %i"<< std::endl;
         medicion[i] = Lectura(sh[i]);
+        std::cout << "bbbb66666 %i"<< std::endl;
     }
     medicion[5]+=1900;
     NuevaMedicion(medicion);

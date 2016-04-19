@@ -15,7 +15,6 @@ class PortSerial {
 public:
     PortSerial();
     PortSerial(int& caracteres, char** dispositivo);
-    PortSerial(const PortSerial& orig);
     void Inicializacion();
     float ReadSensor(std::string sensor);
     void WriteSensor(std::string sensor, int& dato);
