@@ -15,8 +15,6 @@ public:
     Dato(int cVariables);
     Dato(const Dato& orig);
     Dato(int& cVariables, float medicion[] );
-
-
   
     float GetDato(int indice);
 
@@ -29,7 +27,6 @@ private:
 
     int cVariables;
     float *Medicion;
-
 };
 
 #endif	/* DATO_H */

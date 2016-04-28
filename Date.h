@@ -25,11 +25,10 @@ public:
     
     void SetDateFromPC();
     void SetDateFromRTC();
-    //void CheckRTC();
+    void CheckRTC();
     Date& operator= (const Date&);
     virtual ~Date();
     friend  std::ostream& operator<< (std::ostream&, Date&);
-
 
 private:
 

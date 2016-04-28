@@ -10,6 +10,8 @@
 #include <SerialPort.h>
 #include <string>
 #include <vector>
+#include <time.h>
+
 
 class PortSerial {
 public:
@@ -17,7 +19,7 @@ public:
     PortSerial(int& caracteres, char** dispositivo);
     void Inicializacion();
     float ReadSensor(std::string sensor);
-    void WriteSensor(std::string sensor, int& dato);
+    void WriteSensor(unsigned long tsegundos);
     virtual ~PortSerial();
     PortSerial& operator=(const PortSerial& cd);
 
