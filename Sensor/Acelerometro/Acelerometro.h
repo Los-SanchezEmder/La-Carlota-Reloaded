@@ -13,12 +13,47 @@
 
 class Acelerometro : public Sensor {
 public:
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     Acelerometro();
 
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     Acelerometro(const Acelerometro& orig);
 
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     void ObtengoDatos();
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
+    float x(int &i){ return Medicion(i).GetDato(0);};
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
+    float y(int &i){ return Medicion(i).GetDato(1);};
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
+    float z(int &i){ return Medicion(i).GetDato(2);};
 
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     friend std::ostream& operator<<(std::ostream& co, Acelerometro& cd);
 
     virtual ~Acelerometro();

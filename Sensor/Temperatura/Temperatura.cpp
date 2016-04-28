@@ -22,6 +22,7 @@ Temperatura::~Temperatura() {
 
 std::ostream& operator<<(std::ostream& co, Temperatura& cd) {
     Dato ultimodato = cd.UltimaMedicion();
+    
     co << ultimodato.GetDato(0) << std::endl;
     co << std::endl;
     return co;

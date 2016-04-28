@@ -10,7 +10,7 @@
 
 
 Date::Date(): Sensor(6){
-   //SetDateFromRTC();
+   SetDateFromPC();
 };
 /*
 Date::Date(const Date& orig): Sensor(6) {
@@ -39,16 +39,16 @@ void Date::SetDateFromPC() {
     
 }
 void Date::SetDateFromRTC() {
-    std::cout<<"bbbb1111"<<std::endl;
-    std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "sta"};
-    std::cout<<"bbbb2222"<<std::endl;
-    std::cout<<"bbbb3333"<<std::endl;
+    //std::cout<<"bbbb1111"<<std::endl;
+    std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "staa"};
+    //std::cout<<"bbbb2222"<<std::endl;
+    //std::cout<<"bbbb3333"<<std::endl;
     float medicion[6];
-    std::cout<<"bbbb4444"<<std::endl;
+    //std::cout<<"bbbb4444"<<std::endl;
     for (int i = 0; i < 6; i++){
-        std::cout << "bbbb5555 %i"<< std::endl;
+        //std::cout << "bbbb5555 %i"<< std::endl;
         medicion[i] = Lectura(sh[i]);
-        std::cout << "bbbb66666 %i"<< std::endl;
+        //std::cout << "bbbb66666 %i"<< std::endl;
     }
     medicion[5]+=1900;
     NuevaMedicion(medicion);

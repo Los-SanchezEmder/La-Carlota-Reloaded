@@ -12,14 +12,43 @@
 
 class Temperatura : public Sensor {
 public:
+    
+    /** \fn Constructor de un sensor de temperatura, llama al constructor sensor 
+     * con una variable
+    * \brief 
+    * \param
+    * \return  */
     Temperatura();
     
+    /** \fn Funcion utilizada para clonar un objeto
+    * \brief 
+    * \param
+    * \return  */
     Temperatura(const Temperatura& orig);
    
+    /** \fn Funcion destinada a obtener los datos del sensor de Temperatura
+     *  y los guarda
+    * \brief 
+    * \param
+    * \return  */
     void ObtengoDatos();
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
+    float Temp(int &i){ return Medicion(i).GetDato(0);};
 
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     friend std::ostream& operator<<(std::ostream& co, Temperatura& cd);
-
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     virtual ~Temperatura();
 private:
 

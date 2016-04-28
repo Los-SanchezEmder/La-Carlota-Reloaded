@@ -7,6 +7,7 @@
       <itemPath>Sensor/Acelerometro/Acelerometro.h</itemPath>
       <itemPath>Date.h</itemPath>
       <itemPath>Sensor/Dato.h</itemPath>
+      <itemPath>FRDM_Datalogger.h</itemPath>
       <itemPath>PortSerial/PortSerial.h</itemPath>
       <itemPath>Sensor/Sensor.h</itemPath>
       <itemPath>Sensor/Temperatura/Temperatura.h</itemPath>
@@ -21,6 +22,7 @@
       <itemPath>Sensor/Acelerometro/Acelerometro.cpp</itemPath>
       <itemPath>Date.cpp</itemPath>
       <itemPath>Sensor/Dato.cpp</itemPath>
+      <itemPath>FRDM_Datalogger.cpp</itemPath>
       <itemPath>PortSerial/PortSerial.cpp</itemPath>
       <itemPath>Sensor/Sensor.cpp</itemPath>
       <itemPath>Sensor/Temperatura/Temperatura.cpp</itemPath>
@@ -51,6 +53,7 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <architecture>2</architecture>
           <incDir>
             <pElem>/usr/local/lib</pElem>
             <pElem>/usr/local/include</pElem>
@@ -70,6 +73,10 @@
       <item path="Date.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Date.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FRDM_Datalogger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FRDM_Datalogger.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PortSerial/PortSerial.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -109,6 +116,9 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>11</standard>
+          <commandlineTool>g++-4.9
+</commandlineTool>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -116,10 +126,19 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>serial</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Date.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Date.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FRDM_Datalogger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FRDM_Datalogger.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PortSerial/PortSerial.cpp" ex="false" tool="1" flavor2="0">
       </item>

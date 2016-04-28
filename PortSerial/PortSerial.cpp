@@ -8,27 +8,21 @@
 #include <iostream>
 #include "PortSerial.h"
 #include <stdio.h>
+#include <string>
 
 using namespace std;
-
+/*
 PortSerial::PortSerial() {  
     
     cout << "se la manda" << endl;
-    
+}*/
 
-}
         
-PortSerial::PortSerial(int& caracteres, char** dispositivo) {
+PortSerial::PortSerial(char* dispositivo) {
 
-    if (caracteres < 2) {
-        cerr << "No serial device name is given" << endl;
-       
-    }
-
-    cout << "Serial port: " << dispositivo[1] << endl;
+    cout << "Serial port: " << dispositivo << endl;
     cout << "Opening..." << endl;
-    this->serial_port = new SerialPort(dispositivo[1]);
-     cout << serial_port->IsOpen() << endl << serial_port << endl;
+    this->serial_port = new SerialPort(dispositivo);
     try {
         serial_port->Open(SerialPort::BAUD_9600,
                 SerialPort::CHAR_SIZE_8,
@@ -36,7 +30,6 @@ PortSerial::PortSerial(int& caracteres, char** dispositivo) {
                 SerialPort::STOP_BITS_1,
                 SerialPort::FLOW_CONTROL_NONE);
         
-        cout << serial_port->IsOpen() << endl << serial_port << endl;
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
@@ -46,29 +39,24 @@ PortSerial::PortSerial(int& caracteres, char** dispositivo) {
 }
 
 
+
+
 float PortSerial::ReadSensor(std::string sensor) {
     std::string pedido = '#' + sensor + '\n';
     //std::string pedido = '#' + sensor;
-
-    cout << pedido << endl;
+    
+    //cout << pedido << endl;
     char str[50];
     string intermedio;
     bool empiezaCadena = false;
     float valor = 0;
     int i;
-    cout << "zzzzzzz" << endl;
+    //cout << "zzzzzzz" << endl;
     try {
-        try{
-        cout << "antes de pedir el dato" << endl;
+
         serial_port->Write(pedido);
-        cout << "despues de pedir el dato" << endl;
-        }catch(SerialPort::NotOpen){
-            cerr << "No se puede escribir el dato" << endl;
-            
-        }
 
         intermedio = serial_port->ReadLine(500, '\n');
-        cout << intermedio << endl;
         i = 0;
         for (int ii = 0; ii < intermedio.size(); ii++) {
             if ((intermedio[ii] == '#')&& !empiezaCadena) {
@@ -80,7 +68,7 @@ float PortSerial::ReadSensor(std::string sensor) {
                 i++;
             }
         }
-        cout << str << endl;
+        //cout << str << endl;
         sscanf(str, "##%f//", &valor);
         cout << valor << endl;
         

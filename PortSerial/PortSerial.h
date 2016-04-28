@@ -13,12 +13,41 @@
 
 class PortSerial {
 public:
-    PortSerial();
-    PortSerial(int& caracteres, char** dispositivo);
+    //PortSerial();
+    /** \fn 
+    * \brief 
+    * \param ddddd
+    * \return  dddddd */
+    PortSerial(char* dispositivo);
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     void Inicializacion();
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     float ReadSensor(std::string sensor);
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     void WriteSensor(std::string sensor, int& dato);
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     virtual ~PortSerial();
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     PortSerial& operator=(const PortSerial& cd);
 
 private:
