@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Date.o \
+	${OBJECTDIR}/FRDM_Datalogger.o \
 	${OBJECTDIR}/PortSerial/PortSerial.o \
 	${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o \
 	${OBJECTDIR}/Sensor/Dato.o \
@@ -48,8 +49,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -62,16 +63,21 @@ LDLIBSOPTIONS=-L/usr/local/lib -L/usr/local/include -L/usr/lib -lserial
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Date.o: Date.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/local/lib -I/usr/local/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Date.o Date.cpp
+
+${OBJECTDIR}/FRDM_Datalogger.o: FRDM_Datalogger.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/lib -I/usr/local/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FRDM_Datalogger.o FRDM_Datalogger.cpp
 
 ${OBJECTDIR}/PortSerial/PortSerial.o: PortSerial/PortSerial.cpp 
 	${MKDIR} -p ${OBJECTDIR}/PortSerial
@@ -109,7 +115,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/frdm_class
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded
 
 # Subprojects
 .clean-subprojects:
