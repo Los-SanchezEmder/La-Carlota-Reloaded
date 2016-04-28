@@ -5,13 +5,13 @@
  * Created on 25 de marzo de 2015, 17:28
  */
 
-
 #ifndef SENSOR_H
 #define	SENSOR_H
 #include "Dato.h"
 #include <vector>
 #include <math.h>
 #include "../PortSerial/PortSerial.h"
+#include <string>
 
 class Sensor {
 public:
@@ -27,7 +27,6 @@ public:
     * \param cDatos es la cantidad de variables que va a tener el Sensor.
     * \return  */
     Sensor(int cDatos);
-
     //friend float ReadSensor(std::string sensor);
 
     /** \fn Funcion utilizada para clonar un sensor.
@@ -91,7 +90,6 @@ private:
     
     //Puntero a la placa asignada al sensor
     PortSerial *Placa;
-    
 
 protected:
     
@@ -107,6 +105,7 @@ protected:
      *  serie para que la placa lo identifique
     * \return  float, devuelve el valor del sensor leido*/
     float Lectura(std::string cd);
+    void Escritura(unsigned long tsegundos);
 
     /** \fn esta funcion se encarga de agrgar un nuevo vector Dato de mediciones
      * (guarda el vector completo de la medicion)

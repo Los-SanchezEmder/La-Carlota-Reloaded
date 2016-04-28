@@ -9,23 +9,21 @@
 #include "Dato.h"
 #include <iostream>
 #include <vector>
+#include <bits/stringfwd.h>
 #include "../PortSerial/PortSerial.h"
+#include <stdio.h>
 
 Sensor::Sensor() {
 }
-
 Sensor::Sensor(int cDatos) {
     //medicion.resize(200);
     cMediciones = 0;
     cDatosSensor = cDatos;
 }
-
 Sensor::Sensor(const Sensor& orig) {
 }
-
 Sensor::~Sensor() {
 }
-
 std::vector<int> Sensor::Busqueda(float porcentaje) {
     float limiteSuperior = (100 + porcentaje) / 100;
     float limiteInferior = (100 - porcentaje) / 100;
@@ -75,6 +73,10 @@ float Sensor::Lectura(std::string cd) {
     valor = Placa->ReadSensor(cd);
     return valor;
 };
+
+void Sensor::Escritura(unsigned long tsegundos) {
+    Placa->WriteSensor(tsegundos);
+}
 
 void Sensor::NuevaMedicion(float Medicion[]) {
     Dato *nMedicion;

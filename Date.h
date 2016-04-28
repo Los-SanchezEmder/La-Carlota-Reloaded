@@ -53,6 +53,7 @@ public:
     * \param
     * \return  */
     void SetDateFromRTC();
+    void CheckRTC();
     
     //void CheckRTC();
     

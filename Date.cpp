@@ -7,13 +7,15 @@
 
 
 #include "Date.h"
+#include "time.h"
+#include "PortSerial/PortSerial.h"
 
 
 Date::Date(): Sensor(6){
-   SetDateFromPC();
+    SetDateFromPC();
+  
 };
-/*
-Date::Date(const Date& orig): Sensor(6) {
+/*Date::Date(const Date& orig): Sensor(6) {
     this->day = orig.day;
     this->month = orig.month;
     this->year = orig.year;
@@ -26,43 +28,79 @@ void Date::SetDateFromPC() {
 
     time_t t = time(NULL);
     struct tm today = *localtime(&t);
-    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon+1, today.tm_year+1900};
-    /*float medicion[6];
+
+    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon + 1, today.tm_year + 1900};
+    //float medicion[6];
     medicion[0] = today.tm_sec;
     medicion[1] = today.tm_min;
     medicion[2] = today.tm_hour;
-    medicion[3]= today.tm_mday; 
+    medicion[3] = today.tm_mday;
     medicion[4] = today.tm_mon + 1;
-    medicion[5] = today.tm_year + 1900;*/
+    medicion[5] = today.tm_year + 1900;
     NuevaMedicion(medicion);
-    
-    
+
 }
+
 void Date::SetDateFromRTC() {
-    //std::cout<<"bbbb1111"<<std::endl;
-    std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "staa"};
-    //std::cout<<"bbbb2222"<<std::endl;
-    //std::cout<<"bbbb3333"<<std::endl;
+    std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "sta"};
     float medicion[6];
-    //std::cout<<"bbbb4444"<<std::endl;
-    for (int i = 0; i < 6; i++){
-        //std::cout << "bbbb5555 %i"<< std::endl;
+    for (int i = 0; i < 6; i++) {
         medicion[i] = Lectura(sh[i]);
-        //std::cout << "bbbb66666 %i"<< std::endl;
     }
-    medicion[5]+=1900;
+    medicion[4] += 1;
+    medicion[5] += 1900;
     NuevaMedicion(medicion);
 }
 
-/*
-void Date::CheckRTC(){
-    time_t t = time(NULL);
-    struct tm today = *localtime(&t);
-    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon+1, today.tm_year+1900};
-    if
+void Date::CheckRTC() {
+    /*Este método permite revisar la fecha y hora de la RTC y 
+     la computadora y en el caso de que sean diferentes, actualiza la RTC*/
 
+    bool banderacambio = false;  
     
-}*/
+    time_t t = time(NULL);
+    struct tm today; // hora que entrega la RTC luego de medicion[6]
+    struct tm horapc = *localtime(&t); //hora de la pc
+    
+    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon + 1, today.tm_year + 1900};
+
+    for (int j = 0; j < 6; j++) {
+        if (today.tm_sec = !horapc.tm_sec) {
+            today.tm_sec = horapc.tm_sec;
+            banderacambio = true;
+        }
+        if (today.tm_min = !horapc.tm_min) {
+            today.tm_min = horapc.tm_min;
+            banderacambio = true;
+        }
+
+        if (today.tm_hour = !horapc.tm_hour) {
+            today.tm_hour = horapc.tm_hour;
+            banderacambio = true;
+        }
+        if (today.tm_mday = !horapc.tm_mday) {
+            today.tm_mday = horapc.tm_mday;
+            banderacambio = true;
+        }
+        if (today.tm_mon = !horapc.tm_mon) {
+            today.tm_mon = horapc.tm_mon;
+            banderacambio = true;
+        }
+        if (today.tm_year != horapc.tm_year) {
+            today.tm_year = horapc.tm_year;
+            banderacambio = true;
+        }
+
+        if (banderacambio == true) {
+            //si bandera cambio == true, entonces actualizo fecha RTC
+
+            long int tsegundos=0;
+            tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
+            tsegundos -=10800;  //diferencia horaria con el meridiano            
+            Escritura(tsegundos);
+        }
+    }
+}
 /*
 Date& Date::operator=(const Date& cd) {
     this->medicion[0] = cd.Medicion(0);

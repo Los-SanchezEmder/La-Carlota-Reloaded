@@ -36,25 +36,23 @@ PortSerial::PortSerial(char* dispositivo) {
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
-        
+
     }
-    
+
 }
 
 
 
 
 float PortSerial::ReadSensor(std::string sensor) {
-    std::string pedido = '#' + sensor + '\n';
-    //std::string pedido = '#' + sensor;
-    
-    //cout << pedido << endl;
+
+    string pedido = '#' + sensor + '\n';
     char str[50];
     string intermedio;
     bool empiezaCadena = false;
     float valor = 0;
     int i;
-    //cout << "zzzzzzz" << endl;
+
     try {
 
         serial_port->Write(pedido);
@@ -73,45 +71,64 @@ float PortSerial::ReadSensor(std::string sensor) {
         }
         //cout << str << endl;
         sscanf(str, "##%f//", &valor);
-        cout << valor << endl;
-        
+        //cout << valor << endl;
 
-        
     } catch (SerialPort::ReadTimeout E) {
-        cout << "TIMEOUT!"<< endl;
+        cout << "TIMEOUT!" << endl;
         return 0;
-        
     }
-   
+
     return valor;
     //-- Show the received data
 }
 
-void PortSerial::WriteSensor(std::string sensor, int& dato) {
-    //mando comando para escribir
-    float confirmacion= ReadSensor("CRTC");
-    //recibo confirmacion
-    if (confirmacion ==1){
-        time_t reloj= time(NULL);
-        string relojito;
-        relojito = ctime(&reloj);
-        serial_port->Write(relojito);
-        
-    }
-        
+void PortSerial::WriteSensor(unsigned long tsegundos) {
+    //Este metodo permite actualizar fecha y hora rtc
+    string sensor = "set";
+    string pedido = '#' + sensor + '\n';
+    std::string tsecond = std::to_string(tsegundos);
     
-    //envio nuevo tdato de la fecha¿
-    
-}
+    try {
+        try {
+            serial_port->Write(pedido);
+            
+        } catch (SerialPort::NotOpen) {
+            cerr << "No se puede escribir el dato" << endl;
+        }
+        
+    string intermedio = serial_port->ReadLine(500, '\n');
+    string str;
+        
+        cout <<  intermedio << endl;
+        int i = 0;
+         bool empiezaCadena = false;
+        for (int ii = 0; ii < intermedio.size(); ii++) {
+            if ((intermedio[ii] == '#')&& !empiezaCadena) {
+                empiezaCadena = true;
+            }
 
+            if (empiezaCadena) {
+                str[i] = intermedio[ii];
+                i++;
+            }
+        }
+        
+        serial_port->Write(tsecond);
+        
+    } catch (SerialPort::ReadTimeout E) {
+        cout << "TIMEOUT!" << endl;
+        //return 0;
+    }
+
+
+    //-- Show the received data
+}
 
 PortSerial::~PortSerial() {
     this->serial_port->Close();
 }
 
-
-
-PortSerial& PortSerial::operator= (const PortSerial& cd){
-        serial_port= cd.serial_port;
-        return *this;
-    }
+PortSerial& PortSerial::operator=(const PortSerial& cd) {
+    serial_port = cd.serial_port;
+    return *this;
+}

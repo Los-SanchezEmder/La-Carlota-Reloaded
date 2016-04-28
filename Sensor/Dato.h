@@ -59,7 +59,6 @@ private:
 
     int cVariables;
     float *Medicion;
-
 };
 
 #endif	/* DATO_H */

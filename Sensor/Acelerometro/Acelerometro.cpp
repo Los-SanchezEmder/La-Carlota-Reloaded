@@ -32,5 +32,6 @@ void Acelerometro::ObtengoDatos() {
     float medicion[3];
     for (int i = 0; i < 3; i++)
         medicion[i] = Lectura(sh[i]);
+
     NuevaMedicion(medicion);
 }

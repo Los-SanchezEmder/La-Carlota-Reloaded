@@ -10,6 +10,8 @@
 #include <SerialPort.h>
 #include <string>
 #include <vector>
+#include <time.h>
+
 
 class PortSerial {
 public:
@@ -42,6 +44,7 @@ public:
     * \brief 
     * \param
     * \return  */
+    void WriteSensor(unsigned long tsegundos);
     virtual ~PortSerial();
     
     /** \fn 
