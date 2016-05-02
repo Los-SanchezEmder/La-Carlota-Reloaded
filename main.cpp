@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
     
     
     
-        cout<<"000"<<endl;
+    cout<<"000"<<endl;
     vector<int> dominguito;
     
 

@@ -26,6 +26,8 @@ FRDM_Datalogger::FRDM_Datalogger(char* dispositivo) {
     RTC->AsignarPlaca(FRDM);
     temp1->AsignarPlaca(FRDM);
     
+    RTC->CheckRTC();
+    
 }
 
 FRDM_Datalogger::FRDM_Datalogger(const FRDM_Datalogger& orig) {

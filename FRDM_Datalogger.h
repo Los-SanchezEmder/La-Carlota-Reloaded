@@ -30,7 +30,10 @@ public:
     * \brief 
     * \param
     * \return  */
-    friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
+    //friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
+    
+    
+    
     
     void ObtenerDatos(int cantidad);
     virtual ~FRDM_Datalogger();
