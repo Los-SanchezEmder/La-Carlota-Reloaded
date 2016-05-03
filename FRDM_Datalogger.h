@@ -35,14 +35,22 @@ public:
     
     
     
-    void ObtenerDatos(int cantidad);
+    void RealizarMediciones(int cantidad);
     virtual ~FRDM_Datalogger();
 private:
     
-    Acelerometro *acc1;
-    Date *RTC;
-    Temperatura *temp1;
+    Acelerometro acc1;
+    Date RTC;
+    Temperatura temp1;
 
+    struct DatosSensores{
+        Dato3f datoAcc;
+        Dato6i datoRTC;
+        float datoTemp;
+    };
+    
+    std::vector<DatosSensores> mediciones;
+    
 };
 
 #endif /* FRDM_DATALOGGER_H */

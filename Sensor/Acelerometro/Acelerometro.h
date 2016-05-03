@@ -8,8 +8,12 @@
 #ifndef ACELEROMETRO_H
 #define	ACELEROMETRO_H
 #include "../Sensor.h"
-#include "../Dato.h"
 
+struct Dato3f{
+    float x;
+    float y;
+    float z;
+};
 
 class Acelerometro : public Sensor {
 public:
@@ -30,34 +34,15 @@ public:
     * \brief 
     * \param
     * \return  */
-    void ObtengoDatos();
+    void ObtengoDatos(Dato3f& dato);
     
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float x(int &i){ return Medicion(i).GetDato(0);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float y(int &i){ return Medicion(i).GetDato(1);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float z(int &i){ return Medicion(i).GetDato(2);};
-
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    friend std::ostream& operator<<(std::ostream& co, Acelerometro& cd);
 
     virtual ~Acelerometro();
+    
+
 private:
+    
+
 
 };
 

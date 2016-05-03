@@ -11,6 +11,7 @@
 #include "Date.h"
 #include <vector>
 #include "Sensor/Temperatura/Temperatura.h"
+#include "FRDM_Datalogger.h"
 
 #define FRDM_DATALOGGER 1
 // Hola mundo
@@ -27,49 +28,19 @@ int main(int argc, char** argv) {
         cerr << "Se indicaron mas de un dispositivo, el sistema solo soporta uno" << endl;
     }
     
-    //FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
+    FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
     
     
     
     
     
     
-    PortSerial *FRDM;
-    FRDM = new PortSerial(argv[FRDM_DATALOGGER]);
-    //FRDM = new PortSerial(argc, argv);
-
-    Acelerometro acc1;
-    Date RTC;
-    Temperatura temp1;
-    acc1.AsignarPlaca(FRDM);
-    //cout<<"2222"<<endl;
-    RTC.AsignarPlaca(FRDM);
-    temp1.AsignarPlaca(FRDM);
-    RTC.CheckRTC();
-    //cout<<"33333dddd"<<endl;
-    for (int i = 0; i < 20; i++) {
-        cout<< i <<endl;
-        acc1.ObtengoDatos();
-        temp1.ObtengoDatos();
-        cout << temp1.Temp(i) << endl;
-        RTC.SetDateFromRTC();
-        
-        acc1.ObtengoDatos();
-        //cout<<"despues del acelerometro"<<endl;
-        //cout << acc1.Medicion(i).GetDato(0) << endl;
-        //cout<<"antes de temperatura"<<endl;
-        temp1.ObtengoDatos();
-        //cout<<"despues del sensor de temperatura"<<endl;
-        //cout << temp1.Medicion(i).GetDato(0) << endl;
-        //cout<<"antes de la RTC"<<endl;
-        RTC.SetDateFromRTC();
-        //cout<<"despues d ela RTC"<<endl;
-    }
+    FRDM.RealizarMediciones(200);
     
     
     
     
-    
+    /*
     
     cout<<"000"<<endl;
     vector<int> dominguito;
@@ -91,7 +62,7 @@ int main(int argc, char** argv) {
         cout << RTC.meses(dominguito[i]) <<'/';
         cout << RTC.anos(dominguito[i]) << endl;
         
-    }
+    }*/
 
     //FRDM.ReadSensor("d1");
     //sleep(1000);

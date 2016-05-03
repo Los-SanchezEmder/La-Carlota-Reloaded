@@ -7,31 +7,22 @@
 
 #include "Acelerometro.h"
 #include "../Sensor.h"
-#include "../Dato.h"
 #include <iostream>
 
-Acelerometro::Acelerometro() : Sensor(3) {
+Acelerometro::Acelerometro() : Sensor() {
 }
 
-Acelerometro::Acelerometro(const Acelerometro& orig) : Sensor(3) {
+Acelerometro::Acelerometro(const Acelerometro& orig) : Sensor() {
 }
 
 Acelerometro::~Acelerometro() {
 }
 
-std::ostream& operator<<(std::ostream& co, Acelerometro& cd) {
-    Dato ultimodato = cd.UltimaMedicion();
-    for (int i = 0; i < 3; i++)
-        co << ultimodato.GetDato(i) << std::endl;
-    co << std::endl;
-    return co;
-}
 
-void Acelerometro::ObtengoDatos() {
-    std::string sh[3] = {"sax", "say", "saz"};
-    float medicion[3];
-    for (int i = 0; i < 3; i++)
-        medicion[i] = Lectura(sh[i]);
+void Acelerometro::ObtengoDatos(Dato3f& dato) {
+    
+    dato.x = Lectura("sax");
+    dato.y = Lectura("say");
+    dato.z = Lectura("saz");
 
-    NuevaMedicion(medicion);
 }

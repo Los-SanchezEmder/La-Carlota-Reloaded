@@ -11,8 +11,8 @@
 #include "PortSerial/PortSerial.h"
 
 
-Date::Date(): Sensor(6){
-    SetDateFromPC();
+Date::Date(): Sensor(){
+    //SetDateFromPC();
   
 };
 /*Date::Date(const Date& orig): Sensor(6) {
@@ -24,32 +24,32 @@ Date::Date(): Sensor(6){
     this->second = orig.second;
 }*/
 
-void Date::SetDateFromPC() {
+void Date::SetDateFromPC(Dato6i& dato) {
 
     time_t t = time(NULL);
     struct tm today = *localtime(&t);
 
-    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon + 1, today.tm_year + 1900};
-    //float medicion[6];
-    medicion[0] = today.tm_sec;
-    medicion[1] = today.tm_min;
-    medicion[2] = today.tm_hour;
-    medicion[3] = today.tm_mday;
-    medicion[4] = today.tm_mon + 1;
-    medicion[5] = today.tm_year + 1900;
-    NuevaMedicion(medicion);
+    
+        //Dato
+    dato.segundos = today.tm_sec;
+    dato.minutos = today.tm_min;
+    dato.horas = today.tm_hour;
+    dato.dias = today.tm_mday;
+    dato.meses = today.tm_mon + 1;
+    dato.anios = today.tm_year + 1900;
+    
 
 }
 
-void Date::SetDateFromRTC() {
-    std::string sh[6] = {"sts", "stmi", "sth", "std", "stme", "sta"};
-    float medicion[6];
-    for (int i = 0; i < 6; i++) {
-        medicion[i] = Lectura(sh[i]);
-    }
-    medicion[4] += 1;
-    medicion[5] += 1900;
-    NuevaMedicion(medicion);
+void Date::SetDateFromRTC(Dato6i& dato) {
+
+    //Dato
+    dato.segundos = Lectura("sts");
+    dato.minutos = Lectura("stmi");
+    dato.horas = Lectura("sth");
+    dato.dias = Lectura("std");
+    dato.meses = Lectura("stme") + 1;
+    dato.anios = Lectura("sta") + 1900;
 }
 
 void Date::CheckRTC() {

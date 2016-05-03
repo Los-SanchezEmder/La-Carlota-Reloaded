@@ -19,27 +19,28 @@ FRDM_Datalogger::FRDM_Datalogger() {
 FRDM_Datalogger::FRDM_Datalogger(char* dispositivo) {
     PortSerial *FRDM;
     FRDM = new PortSerial(dispositivo);
-    acc1 = new Acelerometro;
-    RTC = new Date;
-    temp1 = new Temperatura;
-    acc1->AsignarPlaca(FRDM);
-    RTC->AsignarPlaca(FRDM);
-    temp1->AsignarPlaca(FRDM);
+    acc1.AsignarPlaca(FRDM);
+    RTC.AsignarPlaca(FRDM);
+    temp1.AsignarPlaca(FRDM);
     
-    RTC->CheckRTC();
+    
+    RTC.CheckRTC();
     
 }
 
 FRDM_Datalogger::FRDM_Datalogger(const FRDM_Datalogger& orig) {
 }
 
-void FRDM_Datalogger::ObtenerDatos(int cantidad){
-        for (int i = 0; i < cantidad; i++) {
-        std::cout << i << std::endl;
-        acc1->ObtengoDatos();
-        temp1->ObtengoDatos();
-        std::cout << temp1->Temp(i) << std::endl;
-        RTC->SetDateFromRTC();
+void FRDM_Datalogger::RealizarMediciones(int cantidad){
+    DatosSensores aux;
+    for (int i = 0; i < cantidad; i++) {
+            
+        acc1.ObtengoDatos(aux.datoAcc);
+        temp1.ObtengoDatos(aux.datoTemp);
+        RTC.SetDateFromRTC(aux.datoRTC);
+        
+        mediciones.push_back(aux);
+        
         
     }
 }
@@ -63,6 +64,8 @@ std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
     return co;
 }
 */
+
+
 FRDM_Datalogger::~FRDM_Datalogger() {
 }
 

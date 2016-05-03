@@ -8,7 +8,6 @@
 #ifndef TEMPERATURA_H
 #define	TEMPERATURA_H
 #include "../Sensor.h"
-#include "../Dato.h"
 
 class Temperatura : public Sensor {
 public:
@@ -31,19 +30,9 @@ public:
     * \brief 
     * \param
     * \return  */
-    void ObtengoDatos();
+    void ObtengoDatos(float& dato);
     
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float Temp(int &i){ return Medicion(i).GetDato(0);};
 
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    friend std::ostream& operator<<(std::ostream& co, Temperatura& cd);
     
     /** \fn 
     * \brief 

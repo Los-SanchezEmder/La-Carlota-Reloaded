@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include "PortSerial/PortSerial.h"
-#include "Sensor/Dato.h"
 #include "Sensor/Sensor.h"
 #include "ctime"
 #include <time.h>
@@ -18,6 +17,26 @@
 
 
 //dddddd
+struct Dato6i{
+    int segundos;
+    int minutos;
+    int horas;
+    int dias;
+    int meses;
+    int anios;
+    /*
+    void dato(int i){
+      switch(i){
+        case 0:
+            return segundos;
+        case 1:
+            return minutos;
+          case 2:
+              return horas;
+              case 
+      }  
+    };*/
+};
 
 
 
@@ -46,13 +65,13 @@ public:
     * \brief 
     * \param
     * \return  */
-    void SetDateFromPC();
+    void SetDateFromPC(Dato6i& dato);
     
     /** \fn 
     * \brief 
     * \param
     * \return  */
-    void SetDateFromRTC();
+    void SetDateFromRTC(Dato6i& dato);
     void CheckRTC();
     
     //void CheckRTC();
@@ -75,41 +94,8 @@ public:
     * \return  */
     friend  std::ostream& operator<< (std::ostream&, Date&);
     
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float segundos(int &i){return Medicion(i).GetDato(0);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float minutos(int &i){return Medicion(i).GetDato(1);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float horas(int &i){return Medicion(i).GetDato(2);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float dias(int &i){return Medicion(i).GetDato(3);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float meses(int &i){return Medicion(i).GetDato(4);};
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    float anos(int &i){return Medicion(i).GetDato(5);};
+
+
 
 
 private:
