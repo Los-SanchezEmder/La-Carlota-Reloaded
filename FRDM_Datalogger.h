@@ -37,6 +37,7 @@ public:
     * \return  */
     //friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
     
+    std::vector<DatosSensores> TodasMediciones(){return mediciones;};
     
     std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
     std::vector<DatosSensores> BusquedaTempMayor(float temperatura);

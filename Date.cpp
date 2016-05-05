@@ -54,17 +54,21 @@ void Date::SetDateFromRTC(Dato6i& dato) {
 
 void Date::CheckRTC() {
     /*Este método permite revisar la fecha y hora de la RTC y 
-     la computadora y en el caso de que sean diferentes, actualiza la RTC*/
+     la computadora, en el caso de que sean diferentes, actualiza la RTC*/
 
     bool banderacambio = false;  
     
     time_t t = time(NULL);
-    struct tm today; // hora que entrega la RTC luego de medicion[6]
     struct tm horapc = *localtime(&t); //hora de la pc
+    struct tm today; // hora de la RTC
     
-    float medicion[6] = {today.tm_sec, today.tm_min, today.tm_hour, today.tm_mday, today.tm_mon + 1, today.tm_year + 1900};
+    today.tm_sec = Lectura("sts");
+    today.tm_min = Lectura("stmi");
+    today.tm_hour = Lectura("sth");
+    today.tm_mday = Lectura("std");
+    today.tm_mon = Lectura("stme") + 1;
+    today.tm_year = Lectura("sta") + 1900;
 
-    for (int j = 0; j < 6; j++) {
         if (today.tm_sec = !horapc.tm_sec) {
             today.tm_sec = horapc.tm_sec;
             banderacambio = true;
@@ -99,8 +103,8 @@ void Date::CheckRTC() {
             tsegundos -=10800;  //diferencia horaria con el meridiano            
             Escritura(tsegundos);
         }
+
     }
-}
 /*
 Date& Date::operator=(const Date& cd) {
     this->medicion[0] = cd.Medicion(0);
@@ -111,6 +115,7 @@ Date& Date::operator=(const Date& cd) {
     second = cd.second;
     return *this;
 }*/
+
 /*
 std::ostream& operator<<(std::ostream& co, Date& cd) {
     //muestra la fecha y hora

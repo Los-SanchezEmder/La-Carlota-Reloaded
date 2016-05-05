@@ -12,6 +12,8 @@
 #include <vector>
 #include "Sensor/Temperatura/Temperatura.h"
 #include "FRDM_Datalogger.h"
+#include "manejo_archivo.h"
+
 
 #define FRDM_DATALOGGER 1
 // Hola mundo
@@ -30,12 +32,20 @@ int main(int argc, char** argv) {
     
     FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
     
-    
-    
-    
-    
-    
     FRDM.RealizarMediciones(200);
+    
+    std::vector<DatosSensores> Datos = FRDM.TodasMediciones();
+    
+    char eleccion;
+    string nombre;
+    cout << "¿desea crear un archivo con las mediciones?" << endl;
+    cout << "presione S o N" << endl;
+    cin >> eleccion;
+    if(eleccion == 'S' || eleccion == 's'){
+        cout << "ingrese un nombre para el archivo" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+    }
     
     
     
