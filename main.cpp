@@ -10,6 +10,7 @@
 #include "PortSerial/PortSerial.h"
 #include "Date.h"
 #include <vector>
+#include <bits/stl_vector.h>
 #include "Sensor/Temperatura/Temperatura.h"
 #include "FRDM_Datalogger.h"
 #include "manejo_archivo.h"
@@ -48,58 +49,44 @@ int main(int argc, char** argv) {
     }
     
     
+    // Busqueda acelerometro
+    
+    Datos.clear();
+    cout << "¿desea realizar alguna busquedaen en las mediciones de acelerometro?" << endl;
+    cout << "presione S o N" << endl;
+    cin >> eleccion;
+    if(eleccion == 'S' || eleccion == 's'){
+        float porcentaje;
+        cout << "Esta funcion esta destinada  abuscar cambios abruptos en las "<< endl;
+        cout << "aceleraciones"<< endl;
+        cout << "Por favor ingrese el porsentaje de variacion de las mediciones :";
+        cin >> porcentaje;
+        Datos = FRDM.BusquedaAccPorcentual(porcentaje);
+        cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+    }
+    
+    // Busqueda temperatura
+    
+    Datos.clear();
+    cout << "¿desea realizar alguna busquedaen en las mediciones de Temperatura?" << endl;
+    cout << "presione S o N" << endl;
+    cin >> eleccion;
+    if(eleccion == 'S' || eleccion == 's'){
+        float temperatura;
+        cout << "Esta funcion busca las temperaturas mayores al valor indicado "<< endl;
+        cout << "Por favor indique el valor de la temperatura :";
+        cin >> temperatura;
+        Datos = FRDM.BusquedaTempMayor(temperatura);
+        cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+    }
     
     
-    /*
     
-    cout<<"000"<<endl;
-    vector<int> dominguito;
     
-
-    
-    dominguito = acc1.Busqueda(5);
-    for (int i = 1; i < dominguito.size(); i++) {
-        cout << i << endl;
-        cout << "X :" << acc1.x(dominguito[i]) << endl;
-        cout << "Y :" << acc1.y(dominguito[i]) << endl;
-        cout << "Z :" << acc1.z(dominguito[i])<< endl;
-        cout << "temperatura: " << temp1.Temp(dominguito[i]) << endl;
-        //-- RTC --
-        cout << RTC.horas(dominguito[i])<<':';
-        cout << RTC.minutos(dominguito[i]) <<':';
-        cout << RTC.segundos(dominguito[i]) << endl;
-        cout << RTC.dias(dominguito[i]) <<'/';
-        cout << RTC.meses(dominguito[i]) <<'/';
-        cout << RTC.anos(dominguito[i]) << endl;
-        
-    }*/
-
-    //FRDM.ReadSensor("d1");
-    //sleep(1000);
-    //acc1.ObtengoDatos();
-
-
-    //PortSerial MBED(argc, argv);
-    //float medicion[3] = {2, 4, 7};
-
     return 0;
 }
 
-
-/*
-clase madre:
-Sensor{
-
-}
-
-RTC{
-}
-
-clases hijos:
-
-temperatura:sensor{
-}
-
-acceleracion:sensor{
-}
- * */
