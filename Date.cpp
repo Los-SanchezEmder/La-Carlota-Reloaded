@@ -95,6 +95,7 @@ void Date::CheckRTC() {
         tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
         tsegundos -= 10800; //diferencia horaria con el meridiano            
         Escritura(tsegundos);
+         
     }
 
 }
