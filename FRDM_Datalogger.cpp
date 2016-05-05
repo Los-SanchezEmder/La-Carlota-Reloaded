@@ -22,8 +22,7 @@ FRDM_Datalogger::FRDM_Datalogger(char* dispositivo) {
     acc1.AsignarPlaca(FRDM);
     RTC.AsignarPlaca(FRDM);
     temp1.AsignarPlaca(FRDM);
-    
-    
+        
     RTC.CheckRTC();
     
 }
@@ -40,9 +39,8 @@ void FRDM_Datalogger::RealizarMediciones(int cantidad){
         RTC.SetDateFromRTC(aux.datoRTC);
         
         mediciones.push_back(aux);
-        
-        
     }
+    
 }
 /*
 std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {

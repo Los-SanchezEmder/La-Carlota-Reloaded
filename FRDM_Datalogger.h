@@ -19,6 +19,11 @@
 #include "Date.h"
 #include "Sensor/Temperatura/Temperatura.h"
 
+struct DatosSensores{
+        Dato3f datoAcc;
+        Dato6i datoRTC;
+        float datoTemp;
+    };
 
 class FRDM_Datalogger {
 public:
@@ -32,22 +37,22 @@ public:
     * \return  */
     //friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
     
+    std::vector<DatosSensores> TodasMediciones(){return mediciones;};
+    
     
     
     
     void RealizarMediciones(int cantidad);
     virtual ~FRDM_Datalogger();
+
+
 private:
     
     Acelerometro acc1;
     Date RTC;
     Temperatura temp1;
 
-    struct DatosSensores{
-        Dato3f datoAcc;
-        Dato6i datoRTC;
-        float datoTemp;
-    };
+    
     
     std::vector<DatosSensores> mediciones;
     
