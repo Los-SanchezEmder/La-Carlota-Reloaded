@@ -54,7 +54,7 @@ void Date::CheckRTC() {
     time_t t = time(NULL);
     struct tm horapc = *localtime(&t); //hora de la pc
     struct tm today; // hora de la RTC
-
+    
     today.tm_sec = Lectura("sts");
     today.tm_min = Lectura("stmi");
     today.tm_hour = Lectura("sth");
@@ -62,43 +62,42 @@ void Date::CheckRTC() {
     today.tm_mon = Lectura("stme") + 1;
     today.tm_year = Lectura("sta") + 1900;
 
-    if (today.tm_sec = !horapc.tm_sec) {
-        today.tm_sec = horapc.tm_sec;
-        banderacambio = true;
-    }
-    if (today.tm_min = !horapc.tm_min) {
-        today.tm_min = horapc.tm_min;
-        banderacambio = true;
-    }
+        if (today.tm_sec = !horapc.tm_sec) {
+            today.tm_sec = horapc.tm_sec;
+            banderacambio = true;
+        }
+        if (today.tm_min = !horapc.tm_min) {
+            today.tm_min = horapc.tm_min;
+            banderacambio = true;
+        }
 
-    if (today.tm_hour = !horapc.tm_hour) {
-        today.tm_hour = horapc.tm_hour;
-        banderacambio = true;
-    }
-    if (today.tm_mday = !horapc.tm_mday) {
-        today.tm_mday = horapc.tm_mday;
-        banderacambio = true;
-    }
-    if (today.tm_mon = !horapc.tm_mon) {
-        today.tm_mon = horapc.tm_mon;
-        banderacambio = true;
-    }
-    if (today.tm_year != horapc.tm_year) {
-        today.tm_year = horapc.tm_year;
-        banderacambio = true;
-    }
+        if (today.tm_hour = !horapc.tm_hour) {
+            today.tm_hour = horapc.tm_hour;
+            banderacambio = true;
+        }
+        if (today.tm_mday = !horapc.tm_mday) {
+            today.tm_mday = horapc.tm_mday;
+            banderacambio = true;
+        }
+        if (today.tm_mon = !horapc.tm_mon) {
+            today.tm_mon = horapc.tm_mon;
+            banderacambio = true;
+        }
+        if (today.tm_year != horapc.tm_year) {
+            today.tm_year = horapc.tm_year;
+            banderacambio = true;
+        }
 
-    if (banderacambio == true) {
-        //si bandera cambio == true, entonces actualizo fecha RTC
+        if (banderacambio == true) {
+            //si bandera cambio == true, entonces actualizo fecha RTC
 
-        long int tsegundos = 0;
-        tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
-        tsegundos -= 10800; //diferencia horaria con el meridiano            
-        Escritura(tsegundos);
-         
+            long int tsegundos=0;
+            tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
+            tsegundos -=10800;  //diferencia horaria con el meridiano            
+            Escritura(tsegundos);
+        }
+
     }
-
-}
 /*
 Date& Date::operator=(const Date& cd) {
     this->medicion[0] = cd.Medicion(0);

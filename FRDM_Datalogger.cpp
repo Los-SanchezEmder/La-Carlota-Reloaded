@@ -22,7 +22,7 @@ FRDM_Datalogger::FRDM_Datalogger(char* dispositivo) {
     acc1.AsignarPlaca(FRDM);
     RTC.AsignarPlaca(FRDM);
     temp1.AsignarPlaca(FRDM);
-        
+    
     RTC.CheckRTC();
     
 }
@@ -39,9 +39,11 @@ void FRDM_Datalogger::RealizarMediciones(int cantidad){
         RTC.SetDateFromRTC(aux.datoRTC);
         
         mediciones.push_back(aux);
+        
     }
     
 }
+
 /*
 std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
     
@@ -61,7 +63,77 @@ std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
 
     return co;
 }
-*/
+ */
+
+std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcentaje) {
+    float limiteSuperior = (100 + porcentaje) / 100;
+    float limiteInferior = (100 - porcentaje) / 100;
+    std::cout << "defini limites de busqueda!!!" << std::endl;
+    std::cout << limiteSuperior << std::endl;
+    std::cout << limiteInferior << std::endl;
+    std::vector<DatosSensores> resultados;
+
+
+    for (int i = 1; i < mediciones.size(); i++) {
+
+        float uno = fabs(mediciones[i - 1].datoAcc.x * limiteInferior);
+        float dos = fabs(mediciones[i - 1].datoAcc.x * limiteSuperior);
+        float comparacion = fabs(mediciones[i].datoAcc.x);
+
+        if ((comparacion <= uno) || (comparacion >= dos)) {
+            //encontre un dato con las caracteristicas que busco
+            //  Guardo hubicacion del dato
+            resultados.push_back(mediciones[i]);
+            break;
+        }
+
+        // Chequeo eje Y
+
+        uno = fabs(mediciones[i - 1].datoAcc.y * limiteInferior);
+        dos = fabs(mediciones[i - 1].datoAcc.y * limiteSuperior);
+        comparacion = fabs(mediciones[i].datoAcc.y);
+
+        if ((comparacion <= uno) || (comparacion >= dos)) {
+            //encontre un dato con las caracteristicas que busco
+            //  Guardo hubicacion del dato
+            resultados.push_back(mediciones[i]);
+            break;
+        }
+
+        // Chequeo eje Z
+
+        uno = fabs(mediciones[i - 1].datoAcc.z * limiteInferior);
+        dos = fabs(mediciones[i - 1].datoAcc.z * limiteSuperior);
+        comparacion = fabs(mediciones[i].datoAcc.z);
+
+        if ((comparacion <= uno) || (comparacion >= dos)) {
+            //encontre un dato con las caracteristicas que busco
+            //  Guardo hubicacion del dato
+            resultados.push_back(mediciones[i]);
+            break;
+        }
+
+    }
+    //Termino busqueda, dentro de busqueda
+    return resultados;
+}
+
+std::vector<DatosSensores> FRDM_Datalogger::BusquedaTempMayor(float temperatura) {
+
+    std::vector<DatosSensores> resultados;
+
+    for (int i = 1; i < mediciones.size(); i++) {
+        
+        if (temperatura < mediciones[i].datoTemp){
+            resultados.push_back(mediciones[i]);
+            
+        }
+        
+    }
+ 
+    //Termino busqueda, dentro de busqueda
+    return resultados;
+}
 
 
 FRDM_Datalogger::~FRDM_Datalogger() {

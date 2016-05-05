@@ -5,7 +5,7 @@
  * Created on 4 de mayo de 2016, 00:22
  */
 
-#include "manejo_archivo.h"
+#include "maneja_archivo.h"
 #include "FRDM_Datalogger.h"
 #include <iostream>
 #include <fstream>

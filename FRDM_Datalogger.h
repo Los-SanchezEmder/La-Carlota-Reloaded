@@ -20,10 +20,10 @@
 #include "Sensor/Temperatura/Temperatura.h"
 
 struct DatosSensores{
-        Dato3f datoAcc;
-        Dato6i datoRTC;
-        float datoTemp;
-    };
+    Dato3f datoAcc;
+    Dato6i datoRTC;
+    float datoTemp;
+};
 
 class FRDM_Datalogger {
 public:
@@ -40,7 +40,8 @@ public:
     std::vector<DatosSensores> TodasMediciones(){return mediciones;};
     
     
-    
+    std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
+    std::vector<DatosSensores> BusquedaTempMayor(float temperatura);
     
     void RealizarMediciones(int cantidad);
     virtual ~FRDM_Datalogger();
