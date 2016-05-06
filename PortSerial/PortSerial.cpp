@@ -11,13 +11,14 @@
 #include <string>
 
 using namespace std;
+
 /*
 PortSerial::PortSerial() {  
     
     cout << "se la manda" << endl;
 }*/
 
-        
+
 PortSerial::PortSerial(char* dispositivo) {
 
     cout << "Serial port: " << dispositivo << endl;
@@ -29,20 +30,16 @@ PortSerial::PortSerial(char* dispositivo) {
                 SerialPort::PARITY_NONE,
                 SerialPort::STOP_BITS_1,
                 SerialPort::FLOW_CONTROL_NONE);
-        
-        
-        
-        
+
+
+
+
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
-
     }
 
 }
-
-
-
 
 float PortSerial::ReadSensor(std::string sensor) {
 
@@ -75,6 +72,8 @@ float PortSerial::ReadSensor(std::string sensor) {
 
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!" << endl;
+        cout << "REINTENTANDO!" << endl;
+        this->ReadSensor(sensor);
         return 0;
     }
 
@@ -87,36 +86,22 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
     string sensor = "set";
     string pedido = '#' + sensor + '\n';
     std::string tsecond = std::to_string(tsegundos);
-    
-    try {
-        try {
-            serial_port->Write(pedido);
-            
-        } catch (SerialPort::NotOpen) {
-            cerr << "No se puede escribir el dato" << endl;
-        }
-        
-    string intermedio = serial_port->ReadLine(500, '\n');
-    string str;
-        
-        cout <<  intermedio << endl;
-        int i = 0;
-         bool empiezaCadena = false;
-        for (int ii = 0; ii < intermedio.size(); ii++) {
-            if ((intermedio[ii] == '#')&& !empiezaCadena) {
-                empiezaCadena = true;
-            }
 
-            if (empiezaCadena) {
-                str[i] = intermedio[ii];
-                i++;
-            }
-        }
-        
+
+    try {
+        serial_port->Write(pedido);
+
+    } catch (SerialPort::NotOpen) {
+        cerr << "No se puede escribir el dato" << endl;
+    }
+
+    try {
         serial_port->Write(tsecond);
-        
+
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!" << endl;
+        cout << "REINTENTANDO!" << endl;
+        this->WriteSensor(tsegundos);
         //return 0;
     }
 
