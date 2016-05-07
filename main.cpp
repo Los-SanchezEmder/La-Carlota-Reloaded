@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
     cin >> eleccion;
     if(eleccion == 'S' || eleccion == 's'){
         float porcentaje;
-        cout << "Esta funcion esta destinada  abuscar cambios abruptos en las "<< endl;
+        cout << "Esta funcion esta destinada a buscar cambios abruptos en las "<< endl;
         cout << "aceleraciones"<< endl;
         cout << "Por favor ingrese el porsentaje de variacion de las mediciones :";
         cin >> porcentaje;

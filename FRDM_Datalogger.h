@@ -23,6 +23,7 @@ struct DatosSensores{
     Dato3f datoAcc;
     Dato6i datoRTC;
     float datoTemp;
+    
 };
 
 class FRDM_Datalogger {

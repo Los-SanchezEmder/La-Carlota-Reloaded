@@ -52,6 +52,8 @@ float PortSerial::ReadSensor(std::string sensor) {
     bool empiezaCadena = false;
     float valor = 0;
     int i;
+    
+    cout << pedido << endl;
 
     try {
 
@@ -74,7 +76,9 @@ float PortSerial::ReadSensor(std::string sensor) {
         //cout << valor << endl;
 
     } catch (SerialPort::ReadTimeout E) {
+        cout << "REINTENTADO!" << endl;
         cout << "TIMEOUT!" << endl;
+        this->ReadSensor(sensor);
         return 0;
     }
 
@@ -87,6 +91,8 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
     string sensor = "set";
     string pedido = '#' + sensor + '\n';
     std::string tsecond = std::to_string(tsegundos);
+    
+    cout << tsegundos << endl;
     
     try {
         try {
@@ -117,6 +123,8 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
         
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!" << endl;
+        cout << "REINTENTADO!" << endl;
+        this->WriteSensor(tsegundos);
         //return 0;
     }
 
