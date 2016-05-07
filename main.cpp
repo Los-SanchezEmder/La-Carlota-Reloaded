@@ -62,8 +62,16 @@ int main(int argc, char** argv) {
         cout << "Por favor ingrese el porsentaje de variacion de las mediciones :";
         cin >> porcentaje;
         Datos = FRDM.BusquedaAccPorcentual(porcentaje);
+        
+        for(int i=0;i< Datos.size();i++){
+            cout << "la aceleracion en y es : " << Datos[i].datoAcc.y << "  del dato : " << i << endl;
+        }
+        
+        cout << "ingrese el nombre del archivo donde lo desea guardara los datos No ordenados" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
         //FRDM.OrdenarX(Datos);
-        std::sort(Datos.begin(), Datos.end(), SortX);
+        std::sort(Datos.begin(), Datos.end(), SortY);
         cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
         cin >> nombre;
         maneja_archivo(nombre, Datos);
@@ -85,14 +93,7 @@ int main(int argc, char** argv) {
         cin >> nombre;
         maneja_archivo(nombre, Datos);
     }
-    cout << "¿desea crear un archivo con las mediciones?" << endl;
-    cout << "presione S o N" << endl;
-    cin >> eleccion;
-    if(eleccion == 'S' || eleccion == 's'){
-        cout << "ingrese un nombre para el archivo" << endl;
-        cin >> nombre;
-        maneja_archivo(nombre, Datos);
-    }
+
     
     
     

@@ -89,14 +89,14 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
     
     cout << tsegundos << endl;
     
-    try {
+    
         try {
             serial_port->Write(pedido);
             
         } catch (SerialPort::NotOpen) {
             cerr << "No se puede escribir el dato" << endl;
         }
-        
+    
     try {
         serial_port->Write(tsecond);
         
@@ -110,6 +110,7 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
 
     //-- Show the received data
 }
+
 
 PortSerial::~PortSerial() {
     this->serial_port->Close();

@@ -68,7 +68,7 @@ LDLIBSOPTIONS=-L/usr/local/lib -L/usr/local/include -L/usr/lib -lserial
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded ${OBJECTFILES} ${LDLIBSOPTIONS}
+	g++-4.9 -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/la-carlota-reloaded ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Date.o: Date.cpp 
 	${MKDIR} -p ${OBJECTDIR}

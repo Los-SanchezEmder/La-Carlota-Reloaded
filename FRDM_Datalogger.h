@@ -31,9 +31,9 @@ struct DatosSensores{
 };
 
 bool SortX(const DatosSensores& b1, const DatosSensores& b2);
-bool SortX(const DatosSensores& b1, const DatosSensores& b2);
-bool SortX(const DatosSensores& b1, const DatosSensores& b2);
-bool SortX(const DatosSensores& b1, const DatosSensores& b2);
+bool SortY(const DatosSensores& b1, const DatosSensores& b2);
+bool SortZ(const DatosSensores& b1, const DatosSensores& b2);
+bool SortTemp(const DatosSensores& b1, const DatosSensores& b2);
 
 class FRDM_Datalogger {
 public:
