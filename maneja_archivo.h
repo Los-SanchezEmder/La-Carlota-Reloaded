@@ -5,8 +5,8 @@
  * Created on 4 de mayo de 2016, 00:22
  */
 
-#ifndef GENERA_ARCHIVO_H
-#define	GENERA_ARCHIVO_H
+#ifndef MANEJA_ARCHIVO_H
+#define	MANEJA_ARCHIVO_H
 
 #include <vector>
 #include "FRDM_Datalogger.h"
@@ -18,6 +18,7 @@ public:
     maneja_archivo(const maneja_archivo& orig);
     void lee_archivo(string nombre,vector<DatosSensores>& mediciones);
     virtual ~maneja_archivo();
+
 private:
 
 };

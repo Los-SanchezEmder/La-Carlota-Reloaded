@@ -122,3 +122,11 @@ std::ostream& operator<<(std::ostream& co, Date& cd) {
 Date::~Date() {
 }
 
+std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC){
+    
+        co << datoRTC.dias << "\t" << datoRTC.meses << "\t";
+	co << datoRTC.anios << "\t" << datoRTC.horas << "\t";
+	co << datoRTC.minutos << "\t" << datoRTC.segundos;
+	
+	return co;
+}

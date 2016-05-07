@@ -19,10 +19,12 @@
 #include "Date.h"
 #include "Sensor/Temperatura/Temperatura.h"
 
+
 struct DatosSensores{
     Dato3f datoAcc;
     Dato6i datoRTC;
     float datoTemp;
+    friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
 };
 
 class FRDM_Datalogger {
@@ -58,6 +60,7 @@ private:
     std::vector<DatosSensores> mediciones;
     
 };
+
 
 #endif /* FRDM_DATALOGGER_H */
 

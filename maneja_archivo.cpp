@@ -21,12 +21,9 @@ std::ofstream fileout(nombre);
 int cantidad = mediciones.size();
 
 for (int i=0;i<cantidad;i++){
-    fileout << mediciones[i].datoRTC.dias << "\t" << mediciones[i].datoRTC.meses << "\t";
-    fileout << mediciones[i].datoRTC.anios << "\t" << mediciones[i].datoRTC.horas << "\t";
-    fileout << mediciones[i].datoRTC.minutos << "\t" << mediciones[i].datoRTC.segundos << "\t";
-    fileout << mediciones[i].datoAcc.x << "\t" << mediciones[i].datoAcc.y << "\t"; 
-    fileout << mediciones[i].datoAcc.z << "\t" << mediciones[i].datoTemp << std::endl;
+    fileout << mediciones[i];
 }
+
 fileout.close();
 }
 
@@ -61,5 +58,4 @@ while(!EOF){
 filein.close();
  
 }
-
 

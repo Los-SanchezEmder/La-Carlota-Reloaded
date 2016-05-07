@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     
     FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
     
-    FRDM.RealizarMediciones(200);
+    FRDM.RealizarMediciones(30);
     
     std::vector<DatosSensores> Datos = FRDM.TodasMediciones();
     

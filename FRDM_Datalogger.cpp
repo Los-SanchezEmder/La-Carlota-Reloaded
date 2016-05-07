@@ -139,3 +139,9 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaTempMayor(float temperatura)
 FRDM_Datalogger::~FRDM_Datalogger() {
 }
 
+
+std::ostream& operator<<(std::ostream& co, DatosSensores& medicion){
+    co << medicion.datoRTC << "\t" << medicion.datoAcc << "\t" << medicion.datoTemp << std::endl;
+    return co;
+}
+
