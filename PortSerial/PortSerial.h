@@ -34,11 +34,6 @@ public:
     * \return  */
     float ReadSensor(std::string sensor);
     
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    void WriteSensor(std::string sensor, int& dato);
     
     /** \fn 
     * \brief 

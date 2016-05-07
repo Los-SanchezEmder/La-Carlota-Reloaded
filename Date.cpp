@@ -62,24 +62,24 @@ void Date::CheckRTC() {
     today.tm_mon = Lectura("stme") + 1;
     today.tm_year = Lectura("sta") + 1900;
 
-        if (today.tm_sec = !horapc.tm_sec) {
+        if (today.tm_sec != horapc.tm_sec) {
             today.tm_sec = horapc.tm_sec;
             banderacambio = true;
         }
-        if (today.tm_min = !horapc.tm_min) {
+        if (today.tm_min != horapc.tm_min) {
             today.tm_min = horapc.tm_min;
             banderacambio = true;
         }
 
-        if (today.tm_hour = !horapc.tm_hour) {
+        if (today.tm_hour != horapc.tm_hour) {
             today.tm_hour = horapc.tm_hour;
             banderacambio = true;
         }
-        if (today.tm_mday = !horapc.tm_mday) {
+        if (today.tm_mday != horapc.tm_mday) {
             today.tm_mday = horapc.tm_mday;
             banderacambio = true;
         }
-        if (today.tm_mon = !horapc.tm_mon) {
+        if (today.tm_mon != horapc.tm_mon) {
             today.tm_mon = horapc.tm_mon;
             banderacambio = true;
         }
@@ -95,6 +95,7 @@ void Date::CheckRTC() {
             tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
             tsegundos -=10800;  //diferencia horaria con el meridiano            
             Escritura(tsegundos);
+            std::cout << "tsegundos = " << tsegundos << std::endl;
         }
 
     }

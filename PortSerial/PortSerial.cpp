@@ -11,6 +11,7 @@
 #include <string>
 
 using namespace std;
+
 /*
 PortSerial::PortSerial() {  
     
@@ -37,9 +38,6 @@ PortSerial::PortSerial(char* dispositivo) {
     }
 
 }
-
-
-
 
 float PortSerial::ReadSensor(std::string sensor) {
 
@@ -99,23 +97,7 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
             cerr << "No se puede escribir el dato" << endl;
         }
         
-    string intermedio = serial_port->ReadLine(500, '\n');
-    string str;
-        
-        cout <<  intermedio << endl;
-        int i = 0;
-         bool empiezaCadena = false;
-        for (int ii = 0; ii < intermedio.size(); ii++) {
-            if ((intermedio[ii] == '#')&& !empiezaCadena) {
-                empiezaCadena = true;
-            }
-
-            if (empiezaCadena) {
-                str[i] = intermedio[ii];
-                i++;
-            }
-        }
-        
+    try {
         serial_port->Write(tsecond);
         
     } catch (SerialPort::ReadTimeout E) {
