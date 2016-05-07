@@ -29,10 +29,7 @@ PortSerial::PortSerial(char* dispositivo) {
                 SerialPort::PARITY_NONE,
                 SerialPort::STOP_BITS_1,
                 SerialPort::FLOW_CONTROL_NONE);
-        
-        
-        
-        
+              
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
