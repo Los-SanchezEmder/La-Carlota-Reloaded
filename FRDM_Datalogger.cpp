@@ -136,6 +136,58 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaTempMayor(float temperatura)
 }
 
 
+
+/*void FRDM_Datalogger::OrdenarX(std::vector<DatosSensores>& Datos){
+    
+    std::sort(Datos.begin(), Datos.end(), SortX);
+}*/
+/*
+template<typename _Funcion>
+void FRDM_Datalogger::Ordenar(std::vector<DatosSensores>& AOrdenar, _Funcion AImplementar){
+    
+    std::sort(AOrdenar.begin(), AOrdenar.end(), AImplementar);
+}*/
+/*
+void FRDM_Datalogger::OrdenarAccX(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarAccY(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarAccZ(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarTemp(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}*/
+
+
+bool SortX(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetV() < b2.GetV());
+	return (b1.datoAcc.x > b2.datoAcc.x);
+}
+bool SortY(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetY() < b2.GetY());
+	return (b1.datoAcc.y > b2.datoAcc.y);
+}
+
+bool SortZ(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetV() < b2.GetV());
+	return (b1.datoAcc.z > b2.datoAcc.z);
+}
+bool SortTemp(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetY() < b2.GetY());
+	return (b1.datoTemp > b2.datoTemp);
+}
+
+
 FRDM_Datalogger::~FRDM_Datalogger() {
 }
 

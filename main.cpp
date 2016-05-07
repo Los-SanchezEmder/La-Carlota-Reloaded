@@ -62,6 +62,8 @@ int main(int argc, char** argv) {
         cout << "Por favor ingrese el porsentaje de variacion de las mediciones :";
         cin >> porcentaje;
         Datos = FRDM.BusquedaAccPorcentual(porcentaje);
+        //FRDM.OrdenarX(Datos);
+        std::sort(Datos.begin(), Datos.end(), SortX);
         cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
         cin >> nombre;
         maneja_archivo(nombre, Datos);
@@ -91,6 +93,8 @@ int main(int argc, char** argv) {
         cin >> nombre;
         maneja_archivo(nombre, Datos);
     }
+    
+    
     
         
     

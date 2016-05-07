@@ -14,7 +14,7 @@ struct Dato3f{
     float y;
     float z;
     
-    std::ostream& operator<<(std::ostream& co, Dato3f& cd);
+    //std::ostream& operator<<(std::ostream& co, Dato3f& cd);
 };
 
 class Acelerometro : public Sensor {
