@@ -27,6 +27,7 @@ struct Dato6i{
     
     friend std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC);
     
+    
     /*
     void dato(int i){
       switch(i){

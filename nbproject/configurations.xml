@@ -11,7 +11,7 @@
       <itemPath>PortSerial/PortSerial.h</itemPath>
       <itemPath>Sensor/Sensor.h</itemPath>
       <itemPath>Sensor/Temperatura/Temperatura.h</itemPath>
-      <itemPath>manejo_archivo.h</itemPath>
+      <itemPath>maneja_archivo.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -109,7 +109,7 @@
       </item>
       <item path="maneja_archivo.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="manejo_archivo.h" ex="false" tool="3" flavor2="0">
+      <item path="maneja_archivo.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -174,7 +174,7 @@
       </item>
       <item path="maneja_archivo.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="manejo_archivo.h" ex="false" tool="3" flavor2="0">
+      <item path="maneja_archivo.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

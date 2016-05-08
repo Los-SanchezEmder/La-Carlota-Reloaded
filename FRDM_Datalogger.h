@@ -25,6 +25,7 @@ struct DatosSensores{
     Dato6i datoRTC;
     float datoTemp;
     friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
+    
 };
 
 class FRDM_Datalogger {

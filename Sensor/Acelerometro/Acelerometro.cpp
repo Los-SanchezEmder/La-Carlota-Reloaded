@@ -35,3 +35,4 @@ std::ostream& operator<< (std::ostream& co,Dato3f& datoAcc){
 	
 	return co;
 }
+

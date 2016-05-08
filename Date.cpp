@@ -130,3 +130,4 @@ std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC){
 	
 	return co;
 }
+

@@ -145,3 +145,5 @@ std::ostream& operator<<(std::ostream& co, DatosSensores& medicion){
     return co;
 }
 
+
+
