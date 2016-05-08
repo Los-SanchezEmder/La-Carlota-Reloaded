@@ -18,7 +18,7 @@ PortSerial::PortSerial() {
     cout << "se la manda" << endl;
 }*/
 
-        
+
 PortSerial::PortSerial(char* dispositivo) {
 
     cout << "Serial port: " << dispositivo << endl;
@@ -30,11 +30,13 @@ PortSerial::PortSerial(char* dispositivo) {
                 SerialPort::PARITY_NONE,
                 SerialPort::STOP_BITS_1,
                 SerialPort::FLOW_CONTROL_NONE);
-              
+
+
+
+
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
-
     }
 
 }
@@ -73,6 +75,7 @@ float PortSerial::ReadSensor(std::string sensor) {
     } catch (SerialPort::ReadTimeout E) {
         cout << "REINTENTADO!" << endl;
         cout << "TIMEOUT!" << endl;
+        cout << "REINTENTANDO!" << endl;
         this->ReadSensor(sensor);
         return 0;
     }
@@ -86,23 +89,21 @@ void PortSerial::WriteSensor(unsigned long tsegundos) {
     string sensor = "set";
     string pedido = '#' + sensor + '\n';
     std::string tsecond = std::to_string(tsegundos);
-    
-    cout << tsegundos << endl;
-    
-    
-        try {
-            serial_port->Write(pedido);
-            
-        } catch (SerialPort::NotOpen) {
-            cerr << "No se puede escribir el dato" << endl;
-        }
-    
+
+
+    try {
+        serial_port->Write(pedido);
+
+    } catch (SerialPort::NotOpen) {
+        cerr << "No se puede escribir el dato" << endl;
+    }
+
     try {
         serial_port->Write(tsecond);
-        
+
     } catch (SerialPort::ReadTimeout E) {
         cout << "TIMEOUT!" << endl;
-        cout << "REINTENTADO!" << endl;
+        cout << "REINTENTANDO!" << endl;
         this->WriteSensor(tsegundos);
         //return 0;
     }

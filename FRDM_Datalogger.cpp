@@ -186,3 +186,9 @@ bool SortTemp(const DatosSensores& b1, const DatosSensores& b2) {
 FRDM_Datalogger::~FRDM_Datalogger() {
 }
 
+
+std::ostream& operator<<(std::ostream& co, DatosSensores& medicion){
+    co << medicion.datoRTC << "\t" << medicion.datoAcc << "\t" << medicion.datoTemp << std::endl;
+    return co;
+}
+

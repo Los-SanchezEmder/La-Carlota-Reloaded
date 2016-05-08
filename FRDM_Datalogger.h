@@ -27,7 +27,7 @@ struct DatosSensores{
     Dato3f datoAcc;
     Dato6i datoRTC;
     float datoTemp;
-    
+    friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
 };
 
 bool SortX(const DatosSensores& b1, const DatosSensores& b2);
@@ -79,6 +79,7 @@ private:
     std::vector<DatosSensores> mediciones;
     
 };
+
 
 #endif /* FRDM_DATALOGGER_H */
 

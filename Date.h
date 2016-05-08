@@ -24,6 +24,9 @@ struct Dato6i{
     int dias;
     int meses;
     int anios;
+    
+    friend std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC);
+    
     /*
     void dato(int i){
       switch(i){
@@ -92,7 +95,7 @@ public:
     * \brief 
     * \param
     * \return  */
-    friend  std::ostream& operator<< (std::ostream&, Date&);
+    friend  std::ostream operator<< (std::ostream&, Date&);
     
 
 

@@ -26,3 +26,12 @@ void Acelerometro::ObtengoDatos(Dato3f& dato) {
     dato.z = Lectura("saz");
 
 }
+
+std::ostream& operator<< (std::ostream& co,Dato3f& datoAcc){
+	
+        co << datoAcc.x << "\t";
+        co << datoAcc.y<< "\t";
+	co << datoAcc.z;
+	
+	return co;
+}
