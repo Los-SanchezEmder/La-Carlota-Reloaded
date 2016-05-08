@@ -144,6 +144,3 @@ std::ostream& operator<<(std::ostream& co, DatosSensores& medicion){
     co << medicion.datoRTC << "\t" << medicion.datoAcc << "\t" << medicion.datoTemp << std::endl;
     return co;
 }
-
-
-
