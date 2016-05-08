@@ -19,6 +19,9 @@
 #include "Date.h"
 #include "Sensor/Temperatura/Temperatura.h"
 
+#include <iostream>
+#include <algorithm>
+#include <vector>
 
 struct DatosSensores{
     Dato3f datoAcc;
@@ -27,6 +30,11 @@ struct DatosSensores{
     friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
     
 };
+
+bool SortX(const DatosSensores& b1, const DatosSensores& b2);
+bool SortY(const DatosSensores& b1, const DatosSensores& b2);
+bool SortZ(const DatosSensores& b1, const DatosSensores& b2);
+bool SortTemp(const DatosSensores& b1, const DatosSensores& b2);
 
 class FRDM_Datalogger {
 public:
@@ -45,6 +53,17 @@ public:
     
     std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
     std::vector<DatosSensores> BusquedaTempMayor(float temperatura);
+    
+    //void OrdenarX(std::vector<DatosSensores>& Datos);
+    
+    //template<typename _Funcion>
+    //void Ordenar(std::vector<DatosSensores>& AOrdenar, _Funcion AImplementar);
+    /*
+    void OrdenarAccX(DatosSensores& Datos, bool funcion);
+    void OrdenarAccY(DatosSensores& Datos, bool funcion);
+    void OrdenarAccZ(DatosSensores& Datos, bool funcion);
+    void OrdenarTemp(DatosSensores& Datos, bool funcion);
+     */
     
     void RealizarMediciones(int cantidad);
     virtual ~FRDM_Datalogger();

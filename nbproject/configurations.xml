@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="95">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -56,7 +56,7 @@
       <compileType>
         <ccTool>
           <developmentMode>5</developmentMode>
-          <standard>8</standard>
+          <standard>11</standard>
           <commandlineTool>g++-4.9</commandlineTool>
           <incDir>
             <pElem>/usr/local/lib</pElem>
@@ -69,6 +69,7 @@
             <pElem>/usr/local/include</pElem>
             <pElem>/usr/lib</pElem>
           </linkerAddLib>
+          <commandlineTool>g++-4.9</commandlineTool>
           <linkerLibItems>
             <linkerLibLibItem>serial</linkerLibLibItem>
           </linkerLibItems>

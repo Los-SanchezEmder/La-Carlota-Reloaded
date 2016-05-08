@@ -43,7 +43,6 @@ void FRDM_Datalogger::RealizarMediciones(int cantidad){
     }
     
 }
-
 /*
 std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
     
@@ -76,6 +75,7 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
 
     for (int i = 1; i < mediciones.size(); i++) {
 
+
         float uno = fabs(mediciones[i - 1].datoAcc.x * limiteInferior);
         float dos = fabs(mediciones[i - 1].datoAcc.x * limiteSuperior);
         float comparacion = fabs(mediciones[i].datoAcc.x);
@@ -84,36 +84,31 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
             //encontre un dato con las caracteristicas que busco
             //  Guardo hubicacion del dato
             resultados.push_back(mediciones[i]);
-            break;
+            uno = fabs(mediciones[i - 1].datoAcc.y * limiteInferior);
+            dos = fabs(mediciones[i - 1].datoAcc.y * limiteSuperior);
+            comparacion = fabs(mediciones[i].datoAcc.y);
         }
-
-        // Chequeo eje Y
-
-        uno = fabs(mediciones[i - 1].datoAcc.y * limiteInferior);
-        dos = fabs(mediciones[i - 1].datoAcc.y * limiteSuperior);
-        comparacion = fabs(mediciones[i].datoAcc.y);
-
-        if ((comparacion <= uno) || (comparacion >= dos)) {
+        else if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
             //  Guardo hubicacion del dato
             resultados.push_back(mediciones[i]);
-            break;
-        }
 
-        // Chequeo eje Z
+            uno = fabs(mediciones[i - 1].datoAcc.z * limiteInferior);
+            dos = fabs(mediciones[i - 1].datoAcc.z * limiteSuperior);
+            comparacion = fabs(mediciones[i].datoAcc.z);
 
-        uno = fabs(mediciones[i - 1].datoAcc.z * limiteInferior);
-        dos = fabs(mediciones[i - 1].datoAcc.z * limiteSuperior);
-        comparacion = fabs(mediciones[i].datoAcc.z);
-
-        if ((comparacion <= uno) || (comparacion >= dos)) {
+        }            // Chequeo eje Z
+        else if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
             //  Guardo hubicacion del dato
+            std::cout << "entro al 3" << std::endl;
             resultados.push_back(mediciones[i]);
-            break;
         }
+        std::cout << "salgo al 3" << std::endl;
 
     }
+
+    std::cout << "salgo for busqueda" << std::endl;
     //Termino busqueda, dentro de busqueda
     return resultados;
 }
@@ -133,6 +128,58 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaTempMayor(float temperatura)
  
     //Termino busqueda, dentro de busqueda
     return resultados;
+}
+
+
+
+/*void FRDM_Datalogger::OrdenarX(std::vector<DatosSensores>& Datos){
+    
+    std::sort(Datos.begin(), Datos.end(), SortX);
+}*/
+/*
+template<typename _Funcion>
+void FRDM_Datalogger::Ordenar(std::vector<DatosSensores>& AOrdenar, _Funcion AImplementar){
+    
+    std::sort(AOrdenar.begin(), AOrdenar.end(), AImplementar);
+}*/
+/*
+void FRDM_Datalogger::OrdenarAccX(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarAccY(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarAccZ(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}
+
+void FRDM_Datalogger::OrdenarTemp(std::vector<DatosSensores>& Datos, bool funcion){
+    
+    std::sort(Datos.begin(), Datos.end(), funcion);
+}*/
+
+
+bool SortX(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetV() < b2.GetV());
+	return (b1.datoAcc.x > b2.datoAcc.x);
+}
+bool SortY(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetY() < b2.GetY());
+	return (b1.datoAcc.y > b2.datoAcc.y);
+}
+
+bool SortZ(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetV() < b2.GetV());
+	return (b1.datoAcc.z > b2.datoAcc.z);
+}
+bool SortTemp(const DatosSensores& b1, const DatosSensores& b2) {
+	//return (b1.GetY() < b2.GetY());
+	return (b1.datoTemp > b2.datoTemp);
 }
 
 
