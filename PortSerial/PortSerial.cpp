@@ -49,8 +49,6 @@ float PortSerial::ReadSensor(std::string sensor) {
     bool empiezaCadena = false;
     float valor = 0;
     int i;
-    
-    cout << pedido << endl;
 
     try {
 
@@ -68,9 +66,8 @@ float PortSerial::ReadSensor(std::string sensor) {
                 i++;
             }
         }
-        //cout << str << endl;
+        
         sscanf(str, "##%f//", &valor);
-        //cout << valor << endl;
 
     } catch (SerialPort::ReadTimeout E) {
         cout << "REINTENTADO!" << endl;

@@ -39,7 +39,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/FRDM_Datalogger.o \
 	${OBJECTDIR}/PortSerial/PortSerial.o \
 	${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o \
-	${OBJECTDIR}/Sensor/Dato.o \
 	${OBJECTDIR}/Sensor/Sensor.o \
 	${OBJECTDIR}/Sensor/Temperatura/Temperatura.o \
 	${OBJECTDIR}/main.o \
@@ -89,11 +88,6 @@ ${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o: Sensor/Acelerometro/Acelerometr
 	${MKDIR} -p ${OBJECTDIR}/Sensor/Acelerometro
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Acelerometro/Acelerometro.o Sensor/Acelerometro/Acelerometro.cpp
-
-${OBJECTDIR}/Sensor/Dato.o: Sensor/Dato.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Sensor
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensor/Dato.o Sensor/Dato.cpp
 
 ${OBJECTDIR}/Sensor/Sensor.o: Sensor/Sensor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sensor

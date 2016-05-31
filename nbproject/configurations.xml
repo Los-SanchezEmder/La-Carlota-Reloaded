@@ -6,7 +6,6 @@
                    projectFiles="true">
       <itemPath>Sensor/Acelerometro/Acelerometro.h</itemPath>
       <itemPath>Date.h</itemPath>
-      <itemPath>Sensor/Dato.h</itemPath>
       <itemPath>FRDM_Datalogger.h</itemPath>
       <itemPath>PortSerial/PortSerial.h</itemPath>
       <itemPath>Sensor/Sensor.h</itemPath>
@@ -16,19 +15,6 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-    </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Source Files"
-                   projectFiles="true">
-      <itemPath>Sensor/Acelerometro/Acelerometro.cpp</itemPath>
-      <itemPath>Date.cpp</itemPath>
-      <itemPath>Sensor/Dato.cpp</itemPath>
-      <itemPath>FRDM_Datalogger.cpp</itemPath>
-      <itemPath>PortSerial/PortSerial.cpp</itemPath>
-      <itemPath>Sensor/Sensor.cpp</itemPath>
-      <itemPath>Sensor/Temperatura/Temperatura.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
-      <itemPath>maneja_archivo.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,6 +27,14 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>Sensor/Acelerometro/Acelerometro.cpp</itemPath>
+    <itemPath>Date.cpp</itemPath>
+    <itemPath>FRDM_Datalogger.cpp</itemPath>
+    <itemPath>PortSerial/PortSerial.cpp</itemPath>
+    <itemPath>Sensor/Sensor.cpp</itemPath>
+    <itemPath>Sensor/Temperatura/Temperatura.cpp</itemPath>
+    <itemPath>main.cpp</itemPath>
+    <itemPath>maneja_archivo.cpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
@@ -93,10 +87,6 @@
             flavor2="0">
       </item>
       <item path="Sensor/Acelerometro/Acelerometro.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sensor/Dato.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Sensor/Dato.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sensor/Sensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -158,10 +148,6 @@
             flavor2="0">
       </item>
       <item path="Sensor/Acelerometro/Acelerometro.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sensor/Dato.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Sensor/Dato.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sensor/Sensor.cpp" ex="false" tool="1" flavor2="0">
       </item>

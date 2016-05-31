@@ -17,12 +17,9 @@
 
 
 #define FRDM_DATALOGGER 1
-// Hola mundo
+
 using namespace std;
 
-/*
- * 
- */
 int main(int argc, char** argv) {
     if (argc < 2) {
         cerr << "Falta indicar el dispositivo deseado a comunicarce" << endl;
@@ -31,15 +28,18 @@ int main(int argc, char** argv) {
         cerr << "Se indicaron mas de un dispositivo, el sistema solo soporta uno" << endl;
     }
     
+    // Crear el objeto de la placa y asignar placa
     FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
     
+    //realizar mediciones
     FRDM.RealizarMediciones(30);
     
     std::vector<DatosSensores> Datos = FRDM.TodasMediciones();
     
     char eleccion;
     string nombre;
-    cout << "¿desea crear un archivo con las mediciones?" << endl;
+    
+    cout << "¿desea crear un archivo con todas las mediciones?" << endl;
     cout << "presione S o N" << endl;
     cin >> eleccion;
     if(eleccion == 'S' || eleccion == 's'){
@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
     // Busqueda acelerometro
     
     Datos.clear();
+    
     cout << "¿desea realizar alguna busquedaen en las mediciones de acelerometro?" << endl;
     cout << "presione S o N" << endl;
     cin >> eleccion;
@@ -62,20 +63,69 @@ int main(int argc, char** argv) {
         cout << "Por favor ingrese el porsentaje de variacion de las mediciones :";
         cin >> porcentaje;
         Datos = FRDM.BusquedaAccPorcentual(porcentaje);
+         
+        cout << "ingrese el nombre del archivo donde lo desea guardara los datos No ordenados" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+        
+        // Ordenamos los datos
+        std::sort(Datos.begin(), Datos.end(), SortY);
+        
+        // Guardamos los datos ordenados
+        cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+    }
+    
+    cout << "¿desea mostrar por pantalla las mediciones encontradas?" << endl;
+    cout << "presione S o N" << endl;
+    cin >> eleccion;
+    if(eleccion == 'S' || eleccion == 's'){
         
         for(int i=0;i< Datos.size();i++){
-            cout << "la aceleracion en y es : " << Datos[i].datoAcc.y << "  del dato : " << i << endl;
+            cout << Datos[i] << i << endl;
         }
         
         cout << "ingrese el nombre del archivo donde lo desea guardara los datos No ordenados" << endl;
         cin >> nombre;
         maneja_archivo(nombre, Datos);
-        //FRDM.OrdenarX(Datos);
+        
+        // Ordenamos los datos
         std::sort(Datos.begin(), Datos.end(), SortY);
+        
+        // Guardamos los datos ordenados
         cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
         cin >> nombre;
         maneja_archivo(nombre, Datos);
     }
+    
+    cout << "¿desea guardar los datos encontrados?" << endl;
+    cout << "presione S o N" << endl;
+    cin >> eleccion;
+    if(eleccion == 'S' || eleccion == 's'){
+        
+        for(int i=0;i< Datos.size();i++){
+            cout << Datos[i] << i << endl;
+        }
+        
+        cout << "ingrese el nombre del archivo donde lo desea guardara los datos No ordenados" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+        
+        // Ordenamos los datos
+        std::sort(Datos.begin(), Datos.end(), SortY);
+        
+        // Guardamos los datos ordenados
+        cout << "ingrese el nombre del archivo donde lo desea guardar" << endl;
+        cin >> nombre;
+        maneja_archivo(nombre, Datos);
+    }
+    
+    
+    
+    
+    
+    
     
     // Busqueda temperatura
     
@@ -93,13 +143,6 @@ int main(int argc, char** argv) {
         cin >> nombre;
         maneja_archivo(nombre, Datos);
     }
-
-    
-    
-    
-        
-    
-    
     
     return 0;
 }

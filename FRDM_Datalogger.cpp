@@ -43,35 +43,13 @@ void FRDM_Datalogger::RealizarMediciones(int cantidad){
     }
     
 }
-/*
-std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
-    
-    this->
-    co << "X :" << acc1-><< endl;
-    co << "Y :" << acc1.y(dominguito[i]) << endl;
-    co << "Z :" << acc1.z(dominguito[i])<< endl;
-    co << "temperatura: " << temp1.Temp(dominguito[i]) << endl;
-    //-- RTC --
-    acc1.
-    co << RTC.horas(dominguito[i])<<':';
-    co << RTC.minutos(dominguito[i]) <<':';
-    co << RTC.segundos(dominguito[i]) << endl;
-    co << RTC.dias(dominguito[i]) <<'/';
-    co << RTC.meses(dominguito[i]) <<'/';
-    co << RTC.anos(dominguito[i]) << endl;
-
-    return co;
-}
- */
 
 std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcentaje) {
+    
     float limiteSuperior = (100 + porcentaje) / 100;
     float limiteInferior = (100 - porcentaje) / 100;
-    std::cout << "defini limites de busqueda!!!" << std::endl;
-    std::cout << limiteSuperior << std::endl;
-    std::cout << limiteInferior << std::endl;
+    
     std::vector<DatosSensores> resultados;
-
 
     for (int i = 1; i < mediciones.size(); i++) {
 
@@ -82,7 +60,7 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
 
         if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
-            //  Guardo hubicacion del dato
+            //  Guardo el dato
             resultados.push_back(mediciones[i]);
             uno = fabs(mediciones[i - 1].datoAcc.y * limiteInferior);
             dos = fabs(mediciones[i - 1].datoAcc.y * limiteSuperior);
@@ -90,7 +68,7 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
         }
         else if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
-            //  Guardo hubicacion del dato
+            //  Guardo el dato
             resultados.push_back(mediciones[i]);
 
             uno = fabs(mediciones[i - 1].datoAcc.z * limiteInferior);
@@ -100,16 +78,11 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
         }            // Chequeo eje Z
         else if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
-            //  Guardo hubicacion del dato
-            std::cout << "entro al 3" << std::endl;
+            //  Guardo el dato
             resultados.push_back(mediciones[i]);
         }
-        std::cout << "salgo al 3" << std::endl;
-
     }
-
-    std::cout << "salgo for busqueda" << std::endl;
-    //Termino busqueda, dentro de busqueda
+    //Termino busqueda
     return resultados;
 }
 
@@ -118,56 +91,21 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaTempMayor(float temperatura)
     std::vector<DatosSensores> resultados;
 
     for (int i = 1; i < mediciones.size(); i++) {
-        
-        if (temperatura < mediciones[i].datoTemp){
+
+        if (temperatura < mediciones[i].datoTemp) {
             resultados.push_back(mediciones[i]);
-            
         }
-        
+
     }
- 
     //Termino busqueda, dentro de busqueda
     return resultados;
 }
-
-
-
-/*void FRDM_Datalogger::OrdenarX(std::vector<DatosSensores>& Datos){
-    
-    std::sort(Datos.begin(), Datos.end(), SortX);
-}*/
-/*
-template<typename _Funcion>
-void FRDM_Datalogger::Ordenar(std::vector<DatosSensores>& AOrdenar, _Funcion AImplementar){
-    
-    std::sort(AOrdenar.begin(), AOrdenar.end(), AImplementar);
-}*/
-/*
-void FRDM_Datalogger::OrdenarAccX(std::vector<DatosSensores>& Datos, bool funcion){
-    
-    std::sort(Datos.begin(), Datos.end(), funcion);
-}
-
-void FRDM_Datalogger::OrdenarAccY(std::vector<DatosSensores>& Datos, bool funcion){
-    
-    std::sort(Datos.begin(), Datos.end(), funcion);
-}
-
-void FRDM_Datalogger::OrdenarAccZ(std::vector<DatosSensores>& Datos, bool funcion){
-    
-    std::sort(Datos.begin(), Datos.end(), funcion);
-}
-
-void FRDM_Datalogger::OrdenarTemp(std::vector<DatosSensores>& Datos, bool funcion){
-    
-    std::sort(Datos.begin(), Datos.end(), funcion);
-}*/
-
 
 bool SortX(const DatosSensores& b1, const DatosSensores& b2) {
 	//return (b1.GetV() < b2.GetV());
 	return (b1.datoAcc.x > b2.datoAcc.x);
 }
+
 bool SortY(const DatosSensores& b1, const DatosSensores& b2) {
 	//return (b1.GetY() < b2.GetY());
 	return (b1.datoAcc.y > b2.datoAcc.y);
@@ -177,6 +115,7 @@ bool SortZ(const DatosSensores& b1, const DatosSensores& b2) {
 	//return (b1.GetV() < b2.GetV());
 	return (b1.datoAcc.z > b2.datoAcc.z);
 }
+
 bool SortTemp(const DatosSensores& b1, const DatosSensores& b2) {
 	//return (b1.GetY() < b2.GetY());
 	return (b1.datoTemp > b2.datoTemp);

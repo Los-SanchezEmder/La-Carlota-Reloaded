@@ -26,19 +26,7 @@ struct Dato6i{
     int anios;
     
     friend std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC);
-    
-    /*
-    void dato(int i){
-      switch(i){
-        case 0:
-            return segundos;
-        case 1:
-            return minutos;
-          case 2:
-              return horas;
-              case 
-      }  
-    };*/
+   
 };
 
 
@@ -55,18 +43,6 @@ public:
     /** \fn 
     * \brief 
     * \param
-    * \return  */    
-    Date(const Date& orig);
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    int GetYear();
-    
-    /** \fn 
-    * \brief 
-    * \param
     * \return  */
     void SetDateFromPC(Dato6i& dato);
     
@@ -76,30 +52,14 @@ public:
     * \return  */
     void SetDateFromRTC(Dato6i& dato);
     void CheckRTC();
-    
-    //void CheckRTC();
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    Date& operator= (const Date&);
-    
+
     /** \fn 
     * \brief 
     * \param
     * \return  */
     virtual ~Date();
     
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    friend  std::ostream operator<< (std::ostream&, Date&);
     
-
-
-
 
 private:
 

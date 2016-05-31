@@ -7,7 +7,6 @@
 
 #include "Temperatura.h"
 #include "../Sensor.h"
-#include "../Dato.h"
 #include <iostream>
 
 
@@ -19,8 +18,6 @@ Temperatura::Temperatura(const Temperatura& orig) : Sensor() {
 
 Temperatura::~Temperatura() {
 }
-
-
 
 void Temperatura::ObtengoDatos(float& dato) {
     dato = Lectura("tem");

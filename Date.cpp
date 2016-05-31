@@ -10,17 +10,7 @@
 #include "PortSerial/PortSerial.h"
 
 Date::Date() : Sensor() {
-    //SetDateFromPC();
 };
-
-/*Date::Date(const Date& orig): Sensor(6) {
-    this->day = orig.day;
-    this->month = orig.month;
-    this->year = orig.year;
-    this->hour = orig.hour;
-    this->minute = orig.minute;
-    this->second = orig.second;
-}*/
 
 void Date::SetDateFromPC(Dato6i& dato) {
 
@@ -99,25 +89,7 @@ void Date::CheckRTC() {
         }
 
     }
-/*
-Date& Date::operator=(const Date& cd) {
-    this->medicion[0] = cd.Medicion(0);
-    month = cd.month;
-    year = cd.year;
-    hour = cd.hour;
-    minute = cd.minute;
-    second = cd.second;
-    return *this;
-}*/
 
-/*
-std::ostream& operator<<(std::ostream& co, Date& cd) {
-    //muestra la fecha y hora
-    //Dato fecha = cd.Medicion();
-    co << "El dia de la medicion fue : " << cd.Medicion(i).GetDato(0) << '/' << cd.Medicion(1)  << '/' << cd.Medicion(2) << std::endl;
-    co << "La hora fue : " << cd.Medicion(3)  << ':' << cd.Medicion(4)  << ':' << cd.Medicion(5)  << std::endl;
-    return co;
-}*/
 
 Date::~Date() {
 }

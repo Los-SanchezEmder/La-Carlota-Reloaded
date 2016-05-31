@@ -15,7 +15,7 @@
 
 class PortSerial {
 public:
-    //PortSerial();
+    
     /** \fn 
     * \brief 
     * \param ddddd
@@ -41,13 +41,16 @@ public:
     * \param
     * \return  */
     void WriteSensor(unsigned long tsegundos);
-    virtual ~PortSerial();
+    
+    
     
     /** \fn 
     * \brief 
     * \param
     * \return  */
     PortSerial& operator=(const PortSerial& cd);
+    
+    virtual ~PortSerial();
 
 private:
     SerialPort *serial_port;

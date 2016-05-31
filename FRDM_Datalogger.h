@@ -23,61 +23,95 @@
 #include <algorithm>
 #include <vector>
 
-struct DatosSensores{
+struct DatosSensores {
     Dato3f datoAcc;
     Dato6i datoRTC;
     float datoTemp;
-    friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
+    friend std::ostream& operator<<(std::ostream& co, DatosSensores& medicion);
 };
 
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortX(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortY(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortZ(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortTemp(const DatosSensores& b1, const DatosSensores& b2);
 
 class FRDM_Datalogger {
 public:
     FRDM_Datalogger();
-    FRDM_Datalogger(char* dispositivo);
-    FRDM_Datalogger(const FRDM_Datalogger& orig);
-    
+
     /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    //friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
-    
-    std::vector<DatosSensores> TodasMediciones(){return mediciones;};
-    
-    
+     * \brief 
+     * \param
+     * \return  */
+    FRDM_Datalogger(char* dispositivo);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
+    FRDM_Datalogger(const FRDM_Datalogger& orig);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
+    std::vector<DatosSensores> TodasMediciones() {
+        return mediciones;
+    };
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
     std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
     std::vector<DatosSensores> BusquedaTempMayor(float temperatura);
-    
-    //void OrdenarX(std::vector<DatosSensores>& Datos);
-    
-    //template<typename _Funcion>
-    //void Ordenar(std::vector<DatosSensores>& AOrdenar, _Funcion AImplementar);
-    /*
-    void OrdenarAccX(DatosSensores& Datos, bool funcion);
-    void OrdenarAccY(DatosSensores& Datos, bool funcion);
-    void OrdenarAccZ(DatosSensores& Datos, bool funcion);
-    void OrdenarTemp(DatosSensores& Datos, bool funcion);
-     */
-    
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
     void RealizarMediciones(int cantidad);
+
     virtual ~FRDM_Datalogger();
 
 
 private:
-    
+    //
     Acelerometro acc1;
+
+    //
     Date RTC;
+
+    //
     Temperatura temp1;
 
-    
-    
+    //
     std::vector<DatosSensores> mediciones;
-    
+
 };
 
 
