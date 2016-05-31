@@ -9,14 +9,13 @@
 #define	DATE_H
 
 #include <iostream>
+#include <fstream>
 #include "PortSerial/PortSerial.h"
 #include "Sensor/Sensor.h"
 #include "ctime"
 #include <time.h>
 
 
-
-//dddddd
 struct Dato6i{
     int segundos;
     int minutos;
@@ -24,25 +23,11 @@ struct Dato6i{
     int dias;
     int meses;
     int anios;
-    
     friend std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC);
+    friend std::ofstream& operator<< (std::ofstream& co,Dato6i& datoRTC);
+    friend std::ifstream& operator>> (std::ifstream& cin,Dato6i& datoRTC);
     
-    
-    /*
-    void dato(int i){
-      switch(i){
-        case 0:
-            return segundos;
-        case 1:
-            return minutos;
-          case 2:
-              return horas;
-              case 
-      }  
-    };*/
 };
-
-
 
 class Date : public Sensor{
 public:
@@ -97,10 +82,6 @@ public:
     * \param
     * \return  */
     friend  std::ostream operator<< (std::ostream&, Date&);
-    
-
-
-
 
 private:
 

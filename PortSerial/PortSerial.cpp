@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include "PortSerial.h"
 #include <stdio.h>
 #include <string>
@@ -15,7 +16,6 @@ using namespace std;
 /*
 PortSerial::PortSerial() {  
     
-    cout << "se la manda" << endl;
 }*/
 
 
@@ -31,14 +31,10 @@ PortSerial::PortSerial(char* dispositivo) {
                 SerialPort::STOP_BITS_1,
                 SerialPort::FLOW_CONTROL_NONE);
 
-
-
-
     } catch (SerialPort::OpenFailed E) {
         cerr << "Error opening the serial port" << endl;
         cout << "Serial port: " << dispositivo[1] << endl;
     }
-
 }
 
 float PortSerial::ReadSensor(std::string sensor) {
@@ -50,8 +46,6 @@ float PortSerial::ReadSensor(std::string sensor) {
     float valor = 0;
     int i;
     
-    cout << pedido << endl;
-
     try {
 
         serial_port->Write(pedido);
@@ -68,12 +62,11 @@ float PortSerial::ReadSensor(std::string sensor) {
                 i++;
             }
         }
-        //cout << str << endl;
+        
         sscanf(str, "##%f//", &valor);
-        //cout << valor << endl;
-
+        
     } catch (SerialPort::ReadTimeout E) {
-        cout << "REINTENTADO!" << endl;
+        
         cout << "TIMEOUT!" << endl;
         cout << "REINTENTANDO!" << endl;
         this->ReadSensor(sensor);

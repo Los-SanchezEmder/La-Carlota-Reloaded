@@ -14,6 +14,7 @@ using namespace std;
 
 class maneja_archivo {
 public:
+    maneja_archivo();
     maneja_archivo(string nombre,vector<DatosSensores>& mediciones);
     maneja_archivo(const maneja_archivo& orig);
     void lee_archivo(string nombre,vector<DatosSensores>& mediciones);

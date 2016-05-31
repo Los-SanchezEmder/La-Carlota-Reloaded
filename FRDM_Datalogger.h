@@ -28,6 +28,8 @@ struct DatosSensores{
     Dato6i datoRTC;
     float datoTemp;
     friend std::ostream& operator<<(std::ostream& co ,DatosSensores& medicion );
+    friend std::ofstream& operator<<(std::ofstream& co ,DatosSensores& medicion );
+    friend std::ifstream& operator>>(std::ifstream& cin ,DatosSensores& aux );
     
 };
 
@@ -53,6 +55,8 @@ public:
     
     std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
     std::vector<DatosSensores> BusquedaTempMayor(float temperatura);
+    void MuestraMediciones();
+   
     
     //void OrdenarX(std::vector<DatosSensores>& Datos);
     

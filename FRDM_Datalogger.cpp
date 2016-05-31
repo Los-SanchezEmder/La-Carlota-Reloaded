@@ -43,26 +43,6 @@ void FRDM_Datalogger::RealizarMediciones(int cantidad){
     }
     
 }
-/*
-std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd) {
-    
-    this->
-    co << "X :" << acc1-><< endl;
-    co << "Y :" << acc1.y(dominguito[i]) << endl;
-    co << "Z :" << acc1.z(dominguito[i])<< endl;
-    co << "temperatura: " << temp1.Temp(dominguito[i]) << endl;
-    //-- RTC --
-    acc1.
-    co << RTC.horas(dominguito[i])<<':';
-    co << RTC.minutos(dominguito[i]) <<':';
-    co << RTC.segundos(dominguito[i]) << endl;
-    co << RTC.dias(dominguito[i]) <<'/';
-    co << RTC.meses(dominguito[i]) <<'/';
-    co << RTC.anos(dominguito[i]) << endl;
-
-    return co;
-}
- */
 
 std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcentaje) {
     float limiteSuperior = (100 + porcentaje) / 100;
@@ -101,15 +81,12 @@ std::vector<DatosSensores> FRDM_Datalogger::BusquedaAccPorcentual(float porcenta
         else if ((comparacion <= uno) || (comparacion >= dos)) {
             //encontre un dato con las caracteristicas que busco
             //  Guardo hubicacion del dato
-            std::cout << "entro al 3" << std::endl;
             resultados.push_back(mediciones[i]);
         }
-        std::cout << "salgo al 3" << std::endl;
-
+        
     }
 
-    std::cout << "salgo for busqueda" << std::endl;
-    //Termino busqueda, dentro de busqueda
+   //Termino busqueda, dentro de busqueda
     return resultados;
 }
 
@@ -188,6 +165,30 @@ FRDM_Datalogger::~FRDM_Datalogger() {
 
 
 std::ostream& operator<<(std::ostream& co, DatosSensores& medicion){
-    co << medicion.datoRTC << "\t" << medicion.datoAcc << "\t" << medicion.datoTemp << std::endl;
+    co << medicion.datoRTC << std::endl;
+    co << medicion.datoAcc << std::endl;
+    co << "La temperatura es: " << medicion.datoTemp << std::endl;
     return co;
 }
+
+std::ofstream& operator<<(std::ofstream& co, DatosSensores& medicion){
+    co << medicion.datoRTC << "\t";
+    co << medicion.datoAcc << "\t";
+    co << medicion.datoTemp << std::endl;
+    return co;
+}
+
+std::ifstream& operator>>(std::ifstream& cin, DatosSensores& aux){
+    cin >> aux.datoRTC;
+    cin >> aux.datoAcc;
+    cin >> aux.datoTemp;
+    return cin;
+}
+
+void FRDM_Datalogger::MuestraMediciones(){
+    int cantidad = 0;
+    cantidad = mediciones.size();
+    for(int i=0 ; i < cantidad; i++){
+        std::cout << mediciones[i];
+    }
+ }

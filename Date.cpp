@@ -13,15 +13,6 @@ Date::Date() : Sensor() {
     //SetDateFromPC();
 };
 
-/*Date::Date(const Date& orig): Sensor(6) {
-    this->day = orig.day;
-    this->month = orig.month;
-    this->year = orig.year;
-    this->hour = orig.hour;
-    this->minute = orig.minute;
-    this->second = orig.second;
-}*/
-
 void Date::SetDateFromPC(Dato6i& dato) {
 
     time_t t = time(NULL);
@@ -95,7 +86,6 @@ void Date::CheckRTC() {
             tsegundos = time(NULL); //obtiene la hora de la pc en segundos desde 1970
             tsegundos -=10800;  //diferencia horaria con el meridiano            
             Escritura(tsegundos);
-            std::cout << "tsegundos = " << tsegundos << std::endl;
         }
 
     }
@@ -124,10 +114,33 @@ Date::~Date() {
 
 std::ostream& operator<< (std::ostream& co,Dato6i& datoRTC){
     
+        co << datoRTC.dias << "/" << datoRTC.meses << "/";
+	co << datoRTC.anios << std::endl;
+        co << datoRTC.horas << ":" << datoRTC.minutos << ":" << datoRTC.segundos;
+	
+	return co;
+}
+
+std::ofstream& operator<< (std::ofstream& co,Dato6i& datoRTC){
+    
         co << datoRTC.dias << "\t" << datoRTC.meses << "\t";
 	co << datoRTC.anios << "\t" << datoRTC.horas << "\t";
 	co << datoRTC.minutos << "\t" << datoRTC.segundos;
 	
 	return co;
+}
+
+
+
+std::ifstream& operator>> (std::ifstream& cin,Dato6i& datoRTC){
+    
+        cin >> datoRTC.dias;
+        cin >> datoRTC.meses;
+	cin >> datoRTC.anios;
+        cin >> datoRTC.horas;
+        cin >> datoRTC.minutos;
+        cin >> datoRTC.segundos;
+	
+	return cin;
 }
 
