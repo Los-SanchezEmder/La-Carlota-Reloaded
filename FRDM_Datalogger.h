@@ -23,7 +23,7 @@
 #include <algorithm>
 #include <vector>
 
-struct DatosSensores{
+struct DatosSensores {
     Dato3f datoAcc;
     Dato6i datoRTC;
     float datoTemp;
@@ -33,27 +33,64 @@ struct DatosSensores{
     
 };
 
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortX(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortY(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortZ(const DatosSensores& b1, const DatosSensores& b2);
+
+/** \fn 
+ * \brief 
+ * \param
+ * \return  */
 bool SortTemp(const DatosSensores& b1, const DatosSensores& b2);
 
 class FRDM_Datalogger {
 public:
     FRDM_Datalogger();
-    FRDM_Datalogger(char* dispositivo);
-    FRDM_Datalogger(const FRDM_Datalogger& orig);
-    
+
     /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    //friend std::ostream& operator<<(std::ostream& co, FRDM_Datalogger& cd);
-    
-    std::vector<DatosSensores> TodasMediciones(){return mediciones;};
-    
-    
+     * \brief 
+     * \param
+     * \return  */
+    FRDM_Datalogger(char* dispositivo);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
+    FRDM_Datalogger(const FRDM_Datalogger& orig);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
+    std::vector<DatosSensores> TodasMediciones() {
+        return mediciones;
+    };
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
     std::vector<DatosSensores> BusquedaAccPorcentual(float porcentaje);
+
+    /** \fn 
+     * \brief 
+     * \param
+     * \return  */
     std::vector<DatosSensores> BusquedaTempMayor(float temperatura);
     void MuestraMediciones();
    
@@ -70,19 +107,26 @@ public:
      */
     
     void RealizarMediciones(int cantidad);
+
+    void AgregaDatos(std::vector<DatosSensores> aux);
+    
+   
     virtual ~FRDM_Datalogger();
 
 
 private:
-    
+    //
     Acelerometro acc1;
+
+    //
     Date RTC;
+
+    //
     Temperatura temp1;
 
-    
-    
+    //
     std::vector<DatosSensores> mediciones;
-    
+
 };
 
 

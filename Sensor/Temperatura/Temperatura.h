@@ -32,8 +32,6 @@ public:
     * \return  */
     void ObtengoDatos(float& dato);
     
-
-    
     /** \fn 
     * \brief 
     * \param

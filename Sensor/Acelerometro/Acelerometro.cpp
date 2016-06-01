@@ -13,12 +13,8 @@
 Acelerometro::Acelerometro() : Sensor() {
 }
 
-Acelerometro::Acelerometro(const Acelerometro& orig) : Sensor() {
-}
-
 Acelerometro::~Acelerometro() {
 }
-
 
 void Acelerometro::ObtengoDatos(Dato3f& dato) {
     

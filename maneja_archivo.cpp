@@ -19,17 +19,14 @@ maneja_archivo::maneja_archivo(){
 /*Este método me permite crear un fichero de salida donde van a almacenarse 
  todas las mediciones realizadas*/
 maneja_archivo::maneja_archivo(string nombre,std::vector<DatosSensores>& mediciones){
-std::ofstream fileout(nombre);
-int cantidad = mediciones.size();
+    std::ofstream fileout(nombre);
+    int cantidad = mediciones.size();
 
-for (int i=0;i<cantidad;i++){
-    fileout << mediciones[i];
-}
+    for (int i=0;i<cantidad;i++){
+        fileout << mediciones[i];
+    }
 
-fileout.close();
-}
-
-maneja_archivo::maneja_archivo(const maneja_archivo& orig) {
+    fileout.close();
 }
 
 maneja_archivo::~maneja_archivo() {
@@ -41,14 +38,21 @@ maneja_archivo::~maneja_archivo() {
  vector de mediciones*/
 void maneja_archivo::lee_archivo(string nombre,vector<DatosSensores>& mediciones){
 
-ifstream filein;
-DatosSensores aux;
+std::ifstream filein;
 filein.open(nombre, ios::in);
-while(!EOF){
+//int cantidad =0;
+  //  cantidad = mediciones.size();
+    //std::cout << "cantidad de datos antes del archivo: " << cantidad << std::endl;
+    DatosSensores aux;
+    
+while (filein!=NULL){
     filein >> aux;
+    //FRDM_Datalogger.AgregaDatos(aux);
     mediciones.push_back(aux);
 }
+    //cantidad = mediciones.size();
+    //std::cout << "cantidad de datos totales: " << cantidad << std::endl;
 filein.close();
- 
+
 }
 

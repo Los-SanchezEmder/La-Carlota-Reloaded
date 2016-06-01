@@ -41,18 +41,6 @@ public:
     /** \fn 
     * \brief 
     * \param
-    * \return  */    
-    Date(const Date& orig);
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    int GetYear();
-    
-    /** \fn 
-    * \brief 
-    * \param
     * \return  */
     void SetDateFromPC(Dato6i& dato);
     
@@ -62,15 +50,7 @@ public:
     * \return  */
     void SetDateFromRTC(Dato6i& dato);
     void CheckRTC();
-    
-    //void CheckRTC();
-    
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
-    Date& operator= (const Date&);
-    
+
     /** \fn 
     * \brief 
     * \param

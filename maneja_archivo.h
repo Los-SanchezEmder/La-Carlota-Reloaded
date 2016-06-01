@@ -15,9 +15,19 @@ using namespace std;
 class maneja_archivo {
 public:
     maneja_archivo();
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     maneja_archivo(string nombre,vector<DatosSensores>& mediciones);
-    maneja_archivo(const maneja_archivo& orig);
+    
+    /** \fn 
+    * \brief 
+    * \param
+    * \return  */
     void lee_archivo(string nombre,vector<DatosSensores>& mediciones);
+    
     virtual ~maneja_archivo();
 
 private:

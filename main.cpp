@@ -17,12 +17,9 @@
 
 
 #define FRDM_DATALOGGER 1
-// Hola mundo
+
 using namespace std;
 
-/*
- * 
- */
 int main(int argc, char** argv) {
     
     if (argc < 2) {
@@ -32,7 +29,7 @@ int main(int argc, char** argv) {
         cerr << "Se indicaron mas de un dispositivo, el sistema solo soporta uno" << endl;
     }
     
-    
+    // Crear el objeto de la placa y asignar placa
     FRDM_Datalogger FRDM(argv[FRDM_DATALOGGER]);
         
     cout << endl;
@@ -70,6 +67,9 @@ int main(int argc, char** argv) {
         cin >> nombre;
         maneja_archivo(nombre, Datos);
     }
+    //n
+    
+    Datos.clear();
 
     cout << "¿Quiere agregar mediciones desde un archivo ya existente?" << endl;
     cout << "presione S o N" << endl;
@@ -78,10 +78,14 @@ int main(int argc, char** argv) {
         cout << "Ingrese el nombre completo y luego presione enter" << endl;
         cin >> nombre;
         MiArchivo.lee_archivo(nombre, Datos);
+        FRDM.AgregaDatos(Datos);
+        //prueba para saber si me carga el archivo
+        FRDM.MuestraMediciones();
+        
     }
     // Busqueda acelerometro
 
-    Datos.clear();
+    //Datos.clear();
     cout << "¿Desea realizar alguna búsqueda en las mediciones de acelerómetro?" << endl;
     cout << "presione S o N" << endl;
     cin >> eleccion;

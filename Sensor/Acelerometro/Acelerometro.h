@@ -31,12 +31,6 @@ public:
     * \brief 
     * \param
     * \return  */
-    Acelerometro(const Acelerometro& orig);
-
-    /** \fn 
-    * \brief 
-    * \param
-    * \return  */
     void ObtengoDatos(Dato3f& dato);
     
 
